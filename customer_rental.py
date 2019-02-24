@@ -27,21 +27,22 @@ class casualCustomer(Customer):
         Customer.__init__(self, rentals)
         self.type = "Casual"
     def initiate_rental(self, numTools = random.randint(1,2), numDays = random.randint(1,2)): #add tools
-        self.rentals.add(Rental(numTools, numDays, numDays, self) #add tools
+        self.rentals.add(Rental(numTools, numDays, numDays, self)) #add tools
+
 
 class businessCustomer(Customer):
     def __init__(self, rentals = set()):
         Customer.__init__(self, rentals)
         self.type = "Business"
-    def initiate_rental(self)): #add tools
-        self.rentals.add(Rental(3, 7, 7, self) #add tools
+    def initiate_rental(self): #add tools
+        self.rentals.add(Rental(3, 7, 7, self)) #add tools
 
 class regularCustomer(Customer):
     def __init__(self, rentals = set()):
         Customer.__init__(self, rentals)
         self.type = "Regular"
     def initiate_rental(self, numTools = random.randint(1,3), numDays = random.randint(3,5)): #add tools
-        self.rentals.add(Rental(numTools, numDays, numDays, self) #add tools
+        self.rentals.add(Rental(numTools, numDays, numDays, self)) #add tools
 
 
 cust1 = regularCustomer()
