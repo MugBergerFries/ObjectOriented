@@ -23,8 +23,8 @@ class Store:
 
     def new_day(self):  # Does housework in the store for a new day, should be called when appropriate by Simulation
         for rental in self.currentRentals:
-            rental.daysLeft -= 1  # Lower remaining days for each current rental by 1
-            if rental.daysLeft == 0:  # If the rental is done
+            rental.new_day()  # Lower remaining days for each current rental by 1
+            if rental.daysRemain == 0:  # If the rental is done
                 for tool in self.tools:
                     if tool in rental.tools:  # If the specified tool from the store was rented in this rental
                         tool.change_available(True)  # 'Return' it (make it available again)
@@ -41,7 +41,7 @@ class Store:
         self.currentRentals.append(rental)  # Add this rental to the current rentals list
         return
 
-    def first_day(self):  # TODO: This class will instantiate and name all the tools for the store
+    def first_day(self):
         for x in range(1, 5):
             self.tools.append(PaintingTool(x, 1))
         for x in range(5, 9):
@@ -60,11 +60,11 @@ class Store:
 
 
 class Rental:
-    def __init__(self, numTools, totalDays, daysRemain, customer):  # , tools):
+    def __init__(self, num_tools, total_days, days_remain, customer):  # , tools):
         self.customer = customer
-        self.numTools = numTools
-        self.totalDays = totalDays
-        self.daysRemain = daysRemain
+        self.numTools = num_tools
+        self.totalDays = total_days
+        self.daysRemain = days_remain
         # self.tools = tools
 
     def new_day(self):
@@ -72,44 +72,48 @@ class Rental:
 
 
 class Customer:
-    def __init__(self, rentals=set()):
-        self.rentals = rentals
+    type = None
+    minTools = None
+    maxTools = None
+    minDays = None
+    maxDays = None
+
+    def __init__(self):
+        self.rentals = []
 
     def add_rental(self, rental):
-        self.rentals.add(rental)
+        self.rentals.append(rental)
 
-    def initiate_rental(self):
-        raise NotImplementedError
+    def initiate_rental(self, num_tools=random.randint(minTools, maxTools),
+                        num_days=random.randint(minDays, maxDays)):  # add tools
+        self.rentals.append(Rental(num_tools, num_days, num_days, self))  # add tools
 
     def get_rentals(self):
         return self.rentals
 
 
 class CasualCustomer(Customer):
-    def __init__(self, rentals=set()):
-        Customer.__init__(self, rentals)
-        self.type = "Casual"
-
-    def initiate_rental(self, numTools=random.randint(1, 2), numDays=random.randint(1, 2)):  # add tools
-        self.rentals.add(Rental(numTools, numDays, numDays, self))  # add tools
+    type = "Casual"
+    minTools = 1
+    maxTools = 2
+    minDays = 1
+    maxDays = 2
 
 
 class BusinessCustomer(Customer):
-    def __init__(self, rentals=set()):
-        Customer.__init__(self, rentals)
-        self.type = "Business"
-
-    def initiate_rental(self):  # add tools
-        self.rentals.add(Rental(3, 7, 7, self))  # add tools
+    type = "Business"
+    minTools = 3
+    maxTools = 3
+    minDays = 7
+    maxDays = 7
 
 
 class RegularCustomer(Customer):
-    def __init__(self, rentals=set()):
-        Customer.__init__(self, rentals)
-        self.type = "Regular"
-
-    def initiate_rental(self, numTools=random.randint(1, 3), numDays=random.randint(3, 5)):  # add tools
-        self.rentals.add(Rental(numTools, numDays, numDays, self))  # add tools
+    type = "Regular"
+    minTools = 1
+    maxTools = 3
+    minDays = 3
+    maxDays = 5
 
 
 class Tool:
@@ -159,7 +163,3 @@ class WoodworkTool(Tool):
 class YardworkTool(Tool):
     tool_type = "Yardwork"
     base_price = 12
-
-
-a = WoodworkTool(1, 1)
-print(a.get_name())
