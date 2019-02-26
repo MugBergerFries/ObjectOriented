@@ -41,7 +41,7 @@ class Store:
         self.currentRentals.append(rental)  # Add this rental to the current rentals list
         return
 
-    def first_day(self):  # TODO: This class will instantiate and name all the tools for the store
+    def first_day(self):
         for x in range(1, 5):
             self.tools.append(PaintingTool(x, 1))
         for x in range(5, 9):
@@ -60,11 +60,11 @@ class Store:
 
 
 class Rental:
-    def __init__(self, numTools, totalDays, daysRemain, customer):  # , tools):
+    def __init__(self, num_tools, total_days, days_remain, customer):  # , tools):
         self.customer = customer
-        self.numTools = numTools
-        self.totalDays = totalDays
-        self.daysRemain = daysRemain
+        self.numTools = num_tools
+        self.totalDays = total_days
+        self.daysRemain = days_remain
         # self.tools = tools
 
     def new_day(self):
@@ -72,47 +72,49 @@ class Rental:
 
 
 class Customer:
-	minTools = None
-	maxTools = None
-	minDays = None
-	maxDays = None
-	type = None
-	
+    type = None
+    minTools = None
+    maxTools = None
+    minDays = None
+    maxDays = None
+
+
     def __init__(self):
         self.rentals = []
 
     def add_rental(self, rental):
-        self.rentals.add(rental)
+        self.rentals.append(rental)
 
-    def initiate_rental(self, numTools=random.randint(minTools, maxTools), numDays=random.randint(minDays, maxDays)):  # add tools
-        self.rentals.add(Rental(numTools, numDays, numDays, self))  # add tools
+    def initiate_rental(self, num_tools=random.randint(minTools, maxTools),
+                        num_days=random.randint(minDays, maxDays)):  # add tools
+        self.rentals.append(Rental(num_tools, num_days, num_days, self))  # add tools
 
     def get_rentals(self):
         return self.rentals
 
 
 class CasualCustomer(Customer):
-	type = "Casual"
-	minTools = 1
-	maxTools = 2
-	minDays = 1
-	maxDays = 2
+    type = "Casual"
+    minTools = 1
+    maxTools = 2
+    minDays = 1
+    maxDays = 2
 
 
 class BusinessCustomer(Customer):
     type = "Business"
     minTools = 3
-	maxTools = 3
-	minDays = 7
-	maxDays = 7
+    maxTools = 3
+    minDays = 7
+    maxDays = 7
 
 
 class RegularCustomer(Customer):
-	type = "Regular"
-	minTools = 1
-	maxTools = 3
-	minDays = 3
-	maxDays = 5
+    type = "Regular"
+    minTools = 1
+    maxTools = 3
+    minDays = 3
+    maxDays = 5
 
 
 class Tool:
@@ -162,7 +164,3 @@ class WoodworkTool(Tool):
 class YardworkTool(Tool):
     tool_type = "Yardwork"
     base_price = 12
-
-
-a = WoodworkTool(1, 1)
-print(a.get_name())
