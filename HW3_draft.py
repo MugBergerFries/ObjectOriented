@@ -249,7 +249,6 @@ class Simulation():
             for ind in customer_inds:
                 self.customers[ind].initiate_rental(store)
             self.day += 1
-            print(sum(t.available for t in store.tools))
         store.report()
 
 
