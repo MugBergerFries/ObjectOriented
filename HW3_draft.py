@@ -1,5 +1,5 @@
 import random
-
+import numpy as np
 
 class Store:
     money = 0  # Total money made so far
@@ -16,7 +16,7 @@ class Store:
         print("\n\nThe store made ", self.money, " dollars total.\n\nCURRENT RENTALS:\n")
         for r in self.currentRentals:  # Assumes Rental class has a printRental method
             r.print_rental()
-        print("\nACTIVE RENTALS:\n")
+        print("\nCOMPLETED RENTALS::\n")
         for r in self.completedRentals:
             r.print_rental()
         return
@@ -211,9 +211,62 @@ class YardworkTool(Tool):
     tool_type = "Yardwork"
     base_price = 12
 
+class Simulation():
+    day = 1
+    customers = []
 
-store = Store()
-store.first_day()
-bob = CasualCustomer(1)
-bob.initiate_rental(store)
-store.report()
+    def create_customers(self):
+        cas_count = 1
+        bus_count = 1
+        reg_count = 1
+        for i in range(1, 11):
+            choice = random.randint(1, 3)
+            if choice == 1:
+                # casual
+                self.customers.append(CasualCustomer(cas_count))
+                cas_count += 1
+                pass
+
+            elif choice == 2:
+                # business
+                self.customers.append(BusinessCustomer(bus_count))
+                bus_count += 1
+
+            elif choice == 3:
+                # regular
+                self.customers.append(RegularCustomer(reg_count))
+                reg_count += 1
+
+    def run_sim(self):
+        store = Store()
+        store.first_day()
+        while self.day <= 35:
+
+            store.new_day()
+            #generate number of customers for the day
+            num_customers = random.randint(1,10)
+            customer_inds = np.random.choice(10, num_customers, replace=False)
+            for ind in customer_inds:
+                self.customers[ind].initiate_rental(store)
+            self.day += 1
+            print(sum(t.available for t in store.tools))
+        store.report()
+
+
+
+
+    def __init__(self):
+        self.create_customers()
+
+
+
+
+# store = Store()
+# store.first_day()
+# bob = CasualCustomer(1)
+# bob.initiate_rental(store)
+# store.report()
+
+sim = Simulation()
+sim.run_sim()
+
