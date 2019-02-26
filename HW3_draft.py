@@ -43,15 +43,15 @@ class Store:
 
     def first_day(self):
         for x in range(1, 5):
-            self.tools.append(PaintingTool(x, 1))
+            self.tools.append(PaintingTool(x + 1, 1))
         for x in range(5, 9):
-            self.tools.append(ConcreteTool(x, 1))
+            self.tools.append(ConcreteTool(x % 4 + 1, 1))
         for x in range(9, 13):
-            self.tools.append(PlumbingTool(x, 1))
+            self.tools.append(PlumbingTool(x % 4 + 1, 1))
         for x in range(13, 17):
-            self.tools.append(YardworkTool(x, 1))
+            self.tools.append(YardworkTool(x % 4 + 1, 1))
         for x in range(17, 21):
-            self.tools.append(WoodworkTool(x, 1))
+            self.tools.append(WoodworkTool(x % 4 + 1, 1))
         return
 
     def get_tools(self):
