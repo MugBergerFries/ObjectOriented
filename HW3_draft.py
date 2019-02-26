@@ -254,18 +254,13 @@ class Simulation():
 
 
 
+
     def __init__(self):
         self.create_customers()
 
 
+if __name__ == '__main__':
+    sim = Simulation()
+    sim.run_sim()
 
-
-# store = Store()
-# store.first_day()
-# bob = CasualCustomer(1)
-# bob.initiate_rental(store)
-# store.report()
-
-sim = Simulation()
-sim.run_sim()
 
