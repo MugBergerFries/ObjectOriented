@@ -8,37 +8,37 @@ class Store:
     tools = []  # List of all tools (Availability is indicated by the 'available' bool in the Tool class)
 
     def report(self):  # Creates the final report after day 35, should be called in the Simulation class
-        print("There are ", sum(tool.available for tool in self.tools), "tools in the store\nCURRENT TOOLS IN THE "
-                                                                        "STORE:\n")
-        for tool in self.tools:  # Print all the tools that are available currently
-            if tool.check_available():
-                print(tool.get_name(), ", ")  # Will leave a trailing ', ' after the list; fix later
+        print("There are ", sum(t.available for t in self.tools), "tools in the store\nCURRENT TOOLS IN THE "
+                                                                  "STORE:\n")
+        for t in self.tools:  # Print all the tools that are available currently
+            if t.check_available():
+                print(t.get_name(), ", ")  # Will leave a trailing ', ' after the list; fix later
         print("\n\nThe store made ", self.money, " dollars total.\n\nCURRENT RENTALS:\n")
-        for rental in self.currentRentals:  # Assumes Rental class has a printRental method
-            rental.printRental()
+        for r in self.currentRentals:  # Assumes Rental class has a printRental method
+            r.printRental()
         print("\nACTIVE RENTALS:\n")
-        for rental in self.completedRentals:
-            rental.printRental()
+        for r in self.completedRentals:
+            r.printRental()
         return
 
     def new_day(self):  # Does housework in the store for a new day, should be called when appropriate by Simulation
-        for rental in self.currentRentals:
-            rental.new_day()  # Lower remaining days for each current rental by 1
-            if rental.daysRemain == 0:  # If the rental is done
-                for tool in self.tools:
-                    if tool in rental.tools:  # If the specified tool from the store was rented in this rental
-                        tool.change_available(True)  # 'Return' it (make it available again)
+        for r in self.currentRentals:
+            r.new_day()  # Lower remaining days for each current rental by 1
+            if r.daysRemain == 0:  # If the rental is done
+                for t in self.tools:
+                    if t in rental.tools:  # If the specified tool from the store was rented in this rental
+                        t.change_available(True)  # 'Return' it (make it available again)
                 self.completedRentals.append(rental)  # Add this rental to the completed rentals list
                 self.currentRentals.remove(rental)  # Remove this rental from the current rentals list
         return
 
-    def rent(self, rental):  # Take the incoming rental and process it
-        for tool in rental.tools:
-            self.money += tool.get_price()  # Add the cost of the tool to the current money total
+    def rent(self, in_rental):  # Take the incoming rental and process it
+        for t in in_rental.tools:
+            self.money += t.get_price()  # Add the cost of the tool to the current money total
             for match_tool in self.tools:
-                if match_tool == tool:  # Find the tool requested in the store inventory
+                if match_tool == t:  # Find the tool requested in the store inventory
                     match_tool.change_available(False)  # 'Rent it out' (make it not available)
-        self.currentRentals.append(rental)  # Add this rental to the current rentals list
+        self.currentRentals.append(in_rental)  # Add this rental to the current rentals list
         return
 
     def first_day(self):
@@ -54,40 +54,60 @@ class Store:
             self.tools.append(WoodworkTool(x, 1))
         return
 
+    def get_tools(self):
+        return self.tools
+
+    def check_tools(self, num_tools):
+        tools = self.get_tools()
+        return sum(t.available for t in tools) >= num_tools
+
+    def choose_tools(self, num_tools):
+        avail_tools = []
+        for t in self.tools:
+            if t.available:
+                avail_tools.append(t)
+        random.shuffle(avail_tools)
+        final_tools = avail_tools[0:num_tools]
+        return final_tools
+
     def __init__(self):  # This constructor calls the method which handles everything needed to set up the store
         self.first_day()
         return
 
 
 class Rental:
-    def __init__(self, num_tools, total_days, days_remain, customer):  # , tools):
+    def __init__(self, num_tools, total_days, days_remain, customer, tools):
         self.customer = customer
         self.numTools = num_tools
         self.totalDays = total_days
         self.daysRemain = days_remain
-        # self.tools = tools
+        self.tools = tools
 
     def new_day(self):
         self.daysRemain -= 1
 
+    def get_rented(self):
+        return self.tools
+
 
 class Customer:
     type = None
-    minTools = None
-    maxTools = None
-    minDays = None
-    maxDays = None
-
+    minTools = 0
+    maxTools = 0
+    minDays = 0
+    maxDays = 0
 
     def __init__(self):
         self.rentals = []
 
-    def add_rental(self, rental):
-        self.rentals.append(rental)
+    def add_rental(self, new_rental):
+        self.rentals.append(new_rental)
 
-    def initiate_rental(self, num_tools=random.randint(minTools, maxTools),
-                        num_days=random.randint(minDays, maxDays)):  # add tools
-        self.rentals.append(Rental(num_tools, num_days, num_days, self))  # add tools
+    def initiate_rental(self, shop):
+        num_tools = random.randint(self.minTools, self.maxTools)
+        num_days = random.randint(self.minDays, self.maxDays)
+        if shop.check_tools(num_tools):
+            self.rentals.append(Rental(num_tools, num_days, num_days, self, shop.choose_tools(num_tools)))  # add tool
 
     def get_rentals(self):
         return self.rentals
@@ -127,7 +147,7 @@ class Tool:
         change = random.randint(-2, 2)
         self.tool_price = self.base_price + change
 
-    def chck_available(self):
+    def check_available(self):
         return self.available
 
     def change_available(self, new_avail):
@@ -164,3 +184,12 @@ class WoodworkTool(Tool):
 class YardworkTool(Tool):
     tool_type = "Yardwork"
     base_price = 12
+
+
+store = Store()
+store.first_day()
+bob = BusinessCustomer()
+bob.initiate_rental(store)
+for rental in bob.get_rentals():
+    for tool in rental.get_rented():
+        print(tool.get_name())
