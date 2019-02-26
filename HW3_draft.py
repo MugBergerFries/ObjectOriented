@@ -78,6 +78,7 @@ class Customer:
     minDays = None
     maxDays = None
 
+
     def __init__(self):
         self.rentals = []
 
@@ -126,7 +127,7 @@ class Tool:
         change = random.randint(-2, 2)
         self.tool_price = self.base_price + change
 
-    def check_available(self):
+    def chck_available(self):
         return self.available
 
     def change_available(self, new_avail):
