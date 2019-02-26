@@ -24,12 +24,12 @@ class Store:
     def new_day(self):  # Does housework in the store for a new day, should be called when appropriate by Simulation
         for r in self.currentRentals:
             r.new_day()  # Lower remaining days for each current rental by 1
-            if r.daysRemain == 0:  # If the rental is done
+            if r.get_days_left() == 0:  # If the rental is done
                 for t in self.tools:
-                    if t in rental.tools:  # If the specified tool from the store was rented in this rental
+                    if t in r.get_rented():  # If the specified tool from the store was rented in this rental
                         t.change_available(True)  # 'Return' it (make it available again)
-                self.completedRentals.append(rental)  # Add this rental to the completed rentals list
-                self.currentRentals.remove(rental)  # Remove this rental from the current rentals list
+                self.completedRentals.append(r)  # Add this rental to the completed rentals list
+                self.currentRentals.remove(r)  # Remove this rental from the current rentals list
         return
 
     def rent(self, in_rental):  # Take the incoming rental and process it
@@ -86,6 +86,9 @@ class Rental:
     def new_day(self):
         self.daysRemain -= 1
 
+    def get_days_left(self):
+        return self.daysRemain
+
     def get_rented(self):
         return self.tools
 
@@ -107,7 +110,9 @@ class Customer:
         num_tools = random.randint(self.minTools, self.maxTools)
         num_days = random.randint(self.minDays, self.maxDays)
         if shop.check_tools(num_tools):
-            self.rentals.append(Rental(num_tools, num_days, num_days, self, shop.choose_tools(num_tools)))  # add tool
+            to_rent = Rental(num_tools, num_days, num_days, self, shop.choose_tools(num_tools))
+            self.rentals.append(to_rent)  # add tool
+            shop.rent(to_rent)
 
     def get_rentals(self):
         return self.rentals
@@ -188,8 +193,11 @@ class YardworkTool(Tool):
 
 store = Store()
 store.first_day()
-bob = BusinessCustomer()
+bob = CasualCustomer()
 bob.initiate_rental(store)
+store.new_day()
+store.new_day()
+store.new_day()
 for rental in bob.get_rentals():
     for tool in rental.get_rented():
-        print(tool.get_name())
+        print(tool.check_available())
