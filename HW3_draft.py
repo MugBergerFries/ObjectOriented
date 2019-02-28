@@ -128,6 +128,12 @@ class Customer:
         for tools in new_rental.get_rented():
             tools += 1
 
+    def new_day(self):
+        for rental in self.rentals:
+            if not rental.get_days_left():
+                for _ in rental.get_rented():
+                    self.tools -= 1
+
     def initiate_rental(self, shop):
         num_tools = random.randint(self.minTools, self.maxTools)
         num_days = random.randint(self.minDays, self.maxDays)
@@ -247,8 +253,9 @@ class Simulation:
         store = Store()
         store.first_day()
         while self.day <= 35:
-
             store.new_day()
+            for cust in self.customers:
+                cust.new_day()
             # generate number of customers for the day
             num_customers = random.randint(1, 10)
             customer_inds = np.random.choice(10, num_customers, replace=False)
