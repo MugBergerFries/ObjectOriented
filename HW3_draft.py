@@ -1,6 +1,7 @@
 import random
 import numpy as np
 
+
 class Store:
     money = 0  # Total money made so far
     currentRentals = []  # Rentals that have not finished yet
@@ -211,7 +212,8 @@ class YardworkTool(Tool):
     tool_type = "Yardwork"
     base_price = 12
 
-class Simulation():
+
+class Simulation:
     day = 1
     customers = []
 
@@ -243,17 +245,13 @@ class Simulation():
         while self.day <= 35:
 
             store.new_day()
-            #generate number of customers for the day
-            num_customers = random.randint(1,10)
+            # generate number of customers for the day
+            num_customers = random.randint(1, 10)
             customer_inds = np.random.choice(10, num_customers, replace=False)
             for ind in customer_inds:
                 self.customers[ind].initiate_rental(store)
             self.day += 1
         store.report()
-
-
-
-
 
     def __init__(self):
         self.create_customers()
@@ -262,5 +260,3 @@ class Simulation():
 if __name__ == '__main__':
     sim = Simulation()
     sim.run_sim()
-
-
