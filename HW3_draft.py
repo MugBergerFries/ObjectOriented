@@ -117,6 +117,7 @@ class Customer:
     maxTools = 0
     minDays = 0
     maxDays = 0
+    tools = 0
 
     def __init__(self, name):
         self.rentals = []
@@ -124,14 +125,17 @@ class Customer:
 
     def add_rental(self, new_rental):
         self.rentals.append(new_rental)
+        for tools in new_rental.get_rented():
+            tools += 1
 
     def initiate_rental(self, shop):
         num_tools = random.randint(self.minTools, self.maxTools)
         num_days = random.randint(self.minDays, self.maxDays)
-        if shop.check_tools(num_tools):
-            to_rent = Rental(num_tools, num_days, num_days, self, shop.choose_tools(num_tools))
-            self.rentals.append(to_rent)  # add tool
-            shop.rent(to_rent)
+        if num_tools + self.tools < 4:
+            if shop.check_tools(num_tools):
+                to_rent = Rental(num_tools, num_days, num_days, self, shop.choose_tools(num_tools))
+                self.rentals.append(to_rent)  # add tool
+                shop.rent(to_rent)
 
     def get_rentals(self):
         return self.rentals
