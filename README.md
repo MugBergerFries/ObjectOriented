@@ -1,5 +1,5 @@
 # ObjectOriented
 
-# Team Members: 
+## Team Members: 
   - Sam Berger, Sam Busser, Jasmine Bascom
   
