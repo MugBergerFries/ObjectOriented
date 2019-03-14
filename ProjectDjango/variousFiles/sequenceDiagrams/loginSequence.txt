@@ -1,0 +1,16 @@
+title Login/Authentication Sequence Diagram
+actor user
+participant Authenticate
+database Spotify API
+user->Authenticate:requestLogin()
+user<-Authenticate:promptUser()
+user-->>Authenticate:username
+Authenticate->Spotify API:getUserToken()
+user<-Spotify API:authorizeConfirm()
+note over user,Spotify API:authorizeConfirm asks the user if the app can access their data
+user-->>Spotify API:confirmation
+Authenticate<<--Spotify API:userToken
+Authenticate->Spotify API:getUserData(userToken)
+Authenticate<<--Spotify API:userData
+Authenticate->>*Client:<<creates>>
+Authenticate->>Client:userData

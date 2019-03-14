@@ -1,0 +1,27 @@
+title Prune Sequence Diagram
+actor user
+participant Prune
+participant Playlist
+participant Client
+deactivate user
+user->Prune:requestPrune()
+activate Prune
+activate user
+user<-Prune:whichPlaylist()
+user-->>Prune:playlistName
+Prune->Client:getPlaylist(playlistName)
+activate Client
+Prune<<--Client:Playlist
+activate Playlist
+deactivate Playlist
+deactivate Client
+Prune->Playlist:getSongs()
+activate Playlist
+deactivateafter Playlist
+activate Playlist
+Prune<<--Playlist:songList
+deactivate Playlist
+Prune->Prune:prune(songList)
+user<<--Prune:prunedPlaylist
+
+deactivate Prune

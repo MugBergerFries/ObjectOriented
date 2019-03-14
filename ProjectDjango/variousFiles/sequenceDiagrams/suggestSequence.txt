@@ -1,0 +1,28 @@
+title Suggest Sequence Diagram
+actor user
+participant Suggest
+participant Playlist
+participant Client
+database Spotify API
+user->Suggest:requestSuggest()
+activate Suggest
+activate user
+user<-Suggest:whichPlaylist()
+user-->>Suggest:playlistName
+Suggest->Client:getPlaylist(playlistName)
+activate Client
+Suggest<<--Client:Playlist
+activate Playlist
+deactivate Playlist
+deactivate Client
+Suggest->Playlist:getSongs()
+activate Playlist
+deactivateafter Playlist
+activate Playlist
+Suggest<<--Playlist:songList
+deactivate Playlist
+Suggest->Spotify API:recommend(songList)
+Suggest<<--Spotify API:newSongs
+Suggest->Suggest:combine()
+user<<--Suggest:suggestedPlaylist
+deactivate Suggest
