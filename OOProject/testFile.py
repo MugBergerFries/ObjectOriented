@@ -10,6 +10,7 @@ def show_tracks(track_list):
 
 username = 'mugbergerfries'
 token = util.prompt_for_user_token(username, 'user-library-read')
+#token = util.prompt_for_user_token(username,scope,client_id='0ffe4f5e083f464f8ad6061cd80785ca',client_secret='e1c15024a0c744a792d729510575a0ca',redirect_uri='http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/')
 if token:
     sp = spotipy.Spotify(auth=token)
     playlists = sp.user_playlists(username)
