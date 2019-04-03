@@ -1,10 +1,939 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>Authentication Placeholder</h1> <img src="data:image/jpeg;base64,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" alt="W3Schools.com" style="width:350px;height:197px;" style="width:50%;">
-  </body>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> Boil the Frog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" href="styles.css?v5" rel="stylesheet" />
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+     <script src="lib/underscore-min.js"></script>
+     <link href="https://sp-bootstrap.global.ssl.fastly.net/8.2.0/sp-bootstrap.min.css" rel="stylesheet">
+
+    <script id="track-template" type="text/template">
+      <div class="adiv" style="background-image: url(<%= image %>)">
+          <div class="buttons">
+                <button title='Skip this track' class='btn-inverse change tooltips'>New track</button>
+                <button title='Skip this artist' class='nbtn nbtn-xs nbtn-inverse btn-narrow bypass tooltips'>Bypass</button>
+                <img class='playbutton play' src='images/play.png'>
+                <img class='playbutton pause' src='images/pause.png'>
+          </div>
+         <div class="track-info">
+            <div class="title album-label"><%= name %></div>
+            <div>
+                <span title='click to show this similar artists' class="tooltips artist album-label"><%= artist %></span>
+                <span class="pull-right artist-popularity"> <%= popularity %> </span>
+            </div>
+         </div>
+      </div>
+    </script>
+
+    <script id="no-track-template" type="text/template">
+     <div class="adiv" style="background-image: url(images/missing.png)">
+          <div class="buttons">
+                <button title='Route around this artist' class='btn bypass tooltips'>Bypass</button>
+          </div>
+         <div class="track-info">
+            <div class="title album-label">(no tracks available)</div>
+            <div>
+                <span title='click to show this similar artists' class="tooltips artist album-label"><%= artist %></span>
+                <span class="pull-right artist-popularity"> <%= popularity %> </span>
+            </div>
+         </div>
+      </div>
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <span class="navbar-logo">Spotify</span>
+            <span class="navbar-title">Boil the Frog</span>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="option option-active" id="show-search">Home</a></li>
+            <li><a class="option" id="show-gallery">Gallery</a></li>
+            <li><a class="option" id="show-about">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div id="search" class="hero-unit">
+       <div class="container">
+        <h1> Boil the Frog</h1>
+            <p class="lead">Create a (nearly) seamless playlist between (almost) any two artists</p>
+            <div id="search" class="xinput-group xform-inline">
+                <input type="text" class="input-large input-path gen-input" id="source" value="">
+                <input type="text" class="input-large input-path gen-input" id="dest" value="">
+                <span class="xform-control">
+                    <button class="btn btn-info btn-sm nbtn-large" id='go' type="button">  Boil the frog </button>
+                </span>
+            </div>
+            <div id="info"> </div>
+            <div id="xbuttons">
+                <span class="" id='tweet-span'>
+                    <a href="https://twitter.com/share" data-size="large" id='tweet' class="twitter-share-button" data-lang="en" data-count='none'>Tweet</a>
+                    <script>!function(d,s,id){var
+                    js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </span>
+                <button class="btn btn-info btn-sm" id='save' type="button"  onClick='savePlaylist()'>  Save this playlist</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery" class="reg-unit">
+       <div class="container">
+            <h1> Boil the Frog Gallery</h1>
+
+                <br>
+                <h2> Favorites </h2>
+                <ul class="gallery-list">
+                    <li> <a href="index.html?src=miley%20cyrus&amp;dest=miles%20davis">Miley Cyrus to Miles Davis </a>
+                    <li> <a href="index.html?src=justin%20bieber&amp;dest=jimi%20hendrix"> Justin Bieber to Jimi Hendrix </a>
+                    <li> <a href="index.html?src=Patti%20Smith&amp;dest=The%20Smiths"> Patti Smith to the Smiths</a>
+                    <li> <a href="index.html?src=elvis%20presley&amp;dest=elvis%20costello"> Elvis to Elvis</a>
+                    <li> <a href="index.html?src=carter%20family&amp;dest=rammstein"> The Carter Family to Rammstein</a>
+                    <li> <a href="index.html?src=kanye%20west&amp;dest=taylor%20swift"> Kanye West to Taylor Swift</a>
+                    <li> <a href="index.html?src=cage+the+elephant&amp;dest=john+cage"> Cage the Elephant to John Cage</a>
+                    <li> <a href="index.html?src=lorde&dest=god%20is%20an%20astronaut"> Lorde to God is an Astronaut</a>
+                    <!--
+                    <li> <a href="index.html?src=mickey%20mouse&amp;dest=deadmau5">Mickey Mouse to deadmau5</a>
+                    <li> <a href="index.html?src=righteous+brothers&amp;dest=steven+wright"> Righteous Brothers to Steven Wright</a>
+                    -->
+                </ul>
+                <h2> Recent Boil the Frogs </h2>
+                <ul class="gallery-list" id="recent-list"> </ul>
+                <h2> Popular Boil the Frogs </h2>
+                <ul class="gallery-list" id="popular-list"> </ul>
+        </div>
+    </div>
+
+    <div id="about" class="reg-unit">
+      <div class="container">
+            <h1> About Boil the Frog</h1>
+
+                <br>
+                <p>
+                <img src='images/frog.jpg' id="frog-image" alt='boiling frog'>
+                <b> Boil the Frog</b> lets you create a playlist of tracks that gradually takes you from one music style
+                to another. It's like the proverbial frog in the pot of water. If you heat up the pot slowly enough, the
+                frog will never notice that he's being made into a stew and jump out of the pot. With a <b>Boil the
+                frog</b> playlist you can do the same, but with music. You can generate a playlist that will take the
+                listener from one style of music to the other, without the listener ever noticing that they are being made
+                into a stew.
+                </p>
+                <br style="clear:both">
+
+                <h2>How does it work?</h2>
+                <p>
+                    To create a Boil the Frog playlist, just type in the names of two artists and a playlist will be
+                    generated that takes you gradually, step by step, from the first artist to the second artist. You can
+                    click on any track to hear the track. Click on the first track to hear the whole playlist.  If you don't
+                    like a particular artist you can route around that particular artist by clicking the 'bypass' button.
+                    The 'New Track' button will select a different track for an artist.
+                </p>
+                <p>
+                    Boil the Frog plays 30 second versions of your tracks. When you find a playlist you like you can save it
+                    to Spotify to listen to the full-length versions.
+                </p>
+
+                <h2> Here are some examples </h2>
+                <ul>
+                    <li> <a href="index.html?src=miley%20cyrus&amp;dest=miles%20davis">Miley Cyrus to Miles Davis </a>
+                    <li> <a href="index.html?src=justin%20bieber&amp;dest=jimi%20hendrix"> Justin Bieber to Jimi Hendrix </a>
+                    <li> <a href="index.html?src=mickey%20mouse&amp;dest=deadmau5">Mickey Mouse to deadmau5</a>
+                    <li> <a href="index.html?src=Patti%20Smith&amp;dest=The%20Smiths"> Patti Smith to the Smiths</a>
+                    <li> <a href="index.html?src=elvis%20presley&amp;dest=elvis%20costello"> Elvis to Elvis</a>
+                    <li> <a href="index.html?src=carter%20family&amp;dest=rammstein"> The Carter Family to Rammstein</a>
+                    <li> <a href="index.html?src=kanye%20west&amp;dest=taylor%20swift"> Kanye West to Taylor Swift</a>
+                </ul>
+
+                <h2>How does it really work?</h2>
+
+                <p>
+                To create this app, <a href='http://spotify.com'>Spotify</a> artist similarity info is
+                used to build an artist similarity graph of about
+                100,000 of the most popular artists. Each artist in the graph is connected to it's most similar neighbors
+                according to the Spotify's artist similarity algorithm.
+                <p>
+                <img id='lz-graph'  alt='image graph' src='images/lz.png'>
+                <br>
+                <p>
+                When a playlist between two artists is created, the graph is used to find the path between the two artists.
+                The path isn't necessarily the shortest path through the graph. Instead, priority is given to paths that
+                travel through artists of similar popularity.  If you start and end with a popular artist, you are more
+                likely to find a path that takes you though other popular artists, and if you start with a long-tail artist
+                you will likely find a path through other long-tail artists.
+                <p>
+                Once the path of artists is found, we need to select the best tracks for the playlist. To do this, we pick
+                a well-known track for each artist that minimizes the difference in energy between this track, the previous
+                track and the next track.
+                <p>
+                Once we have selected the best tracks, we build a playlist using Spotify's nifty web api.
+
+
+                <h2>Who made this?</h2>
+                <p>
+                    This app was built by  <a href="http://twitter.com/plamere">Paul Lamere</a>. If you like this sort of
+                    thing you may be interested in my blog at <a href="http://musicmachinery.com">Music Machinery</a>.
+                </p>
+      </div>
+    </div>
+
+    <div id="main">
+        <div id='list'> </div>
+        <br style="clear:left;"/>
+        <div class="pull-right" id="time-info"> Path created in <span id='path-time'> 10</span> ms, total time
+        was <span id='total-time'> 10</span>ms. </div>
+    </div>
+
+
+    <div class="container">
+
+        <div id="footer">
+          <div class="container">
+          <small>
+            <p class="muted credit">Created by <a href="http://twitter.com/plamere">@plamere</a>.
+            Powered by <a href="http://spotify.com">Spotify</a>.
+            </p>
+          </small>
+          </div>
+        </div>
+    </div><!-- /.container -->
+
+
+    <!-- jQuery required for Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+</body>
+
+
+<script>
+"use strict";
+
+jQuery.ajaxSettings.traditional = true;
+var skipList = [];
+var curArtistPath = [];
+var curArtist = null;
+var trackTemplate = _.template($("#track-template").text());
+var notrackTemplate = _.template($("#no-track-template").text());
+var audio = $("<audio>");
+var url_prefix = "http://smarterplaylists.playlistmachinery.com/frog/";
+var url_prefix = "http://frog.playlistmachinery.com:4682/frog/";
+
+
+function randomChoice(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
+function randomIndex(list) {
+    return Math.floor(Math.random() * list.length);
+}
+
+function clearSkips() {
+    skipList = [];
+}
+
+function scoreTrackList(list) {
+    var maxDelta = 0;
+    var maxIndex = 0;
+    var lastEnergy = -1;
+    for (var i = 0; i < list.length; i++) {
+        var which = list[i];
+        var tracks = curArtistPath[i].tracks;
+        if (tracks.length > 0) {
+            var track = tracks[which];
+            var energy = track.energy;
+            if (lastEnergy >= 0) {
+                var delta = Math.abs(energy - lastEnergy);
+                if (delta > maxDelta) {
+                    maxDelta = delta;
+                    maxIndex = i;
+                }
+            }
+            lastEnergy = energy;
+        }
+    }
+    return [maxDelta, maxIndex];
+}
+
+function randomizePlaylist() {
+    var indicies = [];
+
+    for (var i = 0; i < curArtistPath.length; i++) {
+        var tracks = curArtistPath[i].tracks;
+        var index = Math.floor(Math.random() * tracks.length);
+        indicies.push(index);
+    }
+    return indicies;
+}
+
+
+function applyIndicies(indicies) {
+    for (var i = 0; i < curArtistPath.length; i++) {
+        var artist = curArtistPath[i];
+        artist.curTrack = indicies[i];
+    }
+}
+
+function directedEnergyMinimizer(indicies) {
+
+    var done = false;
+    var bestList = indicies.slice(0);
+
+    var score_and_index = scoreTrackList(indicies);
+    while (!done) {
+        done = true;
+
+        var score = score_and_index[0];
+        var index = score_and_index[1];
+
+        var artist = curArtistPath[index];
+        for (var i = 0; i < artist.tracks.length; i++) {
+            indicies[index] = i;
+
+            score_and_index = scoreTrackList(indicies);
+            var newScore = score_and_index[0];
+            if (newScore < score) {
+                done = false;
+                bestList = indicies.slice(0);
+                break;
+            }
+        }
+    }
+    return bestList;
+}
+
+function randomEnergyMinimizer() {
+    var bestScore = 1;
+    var bestList = null;
+    var tries = 100000;
+
+    for (var i = 0; i < tries; i++) {
+        var indicies = randomizePlaylist();
+        var score_and_index = scoreTrackList(indicies);
+        var score = score_and_index[0];
+        if (score < bestScore) {
+            bestScore = score;
+            bestList = indicies;
+        }
+    }
+    bestList = directedEnergyMinimizer(bestList);
+    var finalScore = scoreTrackList(bestList)[0];
+    return bestList;
+}
+
+function minimizeEnergyChange() {
+    var indicies = randomEnergyMinimizer();
+    applyIndicies(indicies);
+}
+
+function generatePath() {
+    var source = $("#source").val();
+    var dest = $("#dest").val();
+    if (dest.length === 0) {
+        fetchSims(source);
+    } else {
+        fetchPath(source, dest);
+    }
+}
+
+function addBypassClick(elem, artist) {
+    elem.click(function(e) {
+        skipList.push(artist.id);
+        generatePath();
+        ga_track('frog', 'bypass',  artist.name);
+    });
+}
+
+function removeFromList(list, item) {
+    var index = list.indexOf(item);
+    if  (index >= 0) {
+        list.splice(index, 1);
+    }
+}
+
+
+function getNoPlayer(artist, allowBypass) {
+    var el = $(notrackTemplate(artist))
+    var bypass = el.find('.bypass');
+
+    if (allowBypass) {
+        addBypassClick(bypass, artist);
+    } else {
+        bypass.hide();
+    }
+
+    var buttons = el.find('.buttons');
+    buttons.hide();
+    el.hover(
+        function() {
+            artistChanged(artist);
+            buttons.show();
+        },
+        function() {
+            buttons.hide();
+        }
+    );
+
+    el.find('.tooltips').tooltip({placement:'auto', delay : 1500, html:true});
+    return el;
+}
+
+function getPlayer(artist, allowBypass) {
+    var track = artist.tracks[artist.curTrack];
+    track.artist = artist.name;
+    track.popularity = artist.popularity;
+    var el = $(trackTemplate(track))
+
+    var changeTrack = el.find('.change');
+    addChangeTrack(changeTrack, artist);
+
+    var bypass = el.find('.bypass');
+
+    if (allowBypass) {
+        addBypassClick(bypass, artist);
+    } else {
+        bypass.hide();
+    }
+
+    //var art = el.find('.album-art');
+
+    var buttons = el.find('.buttons');
+    buttons.hide();
+
+    var pause = el.find('.pause');
+    var play = el.find('.play');
+
+    play.click( function() {
+        playArtist(artist);
+        ga_track('frog', 'click-play',  artist.name);
+    });
+
+    pause.click( function() {
+        playArtist(artist);
+        ga_track('frog', 'click-pause',  artist.name);
+    });
+
+    var artistElement = el.find('.artist');
+    artistElement.click( function() {
+        $("#source").val(artist.name);
+        $("#dest").val("");
+        fetchSims(artist.name);
+    });
+
+    el.hover(
+        function() {
+            artistChanged(artist);
+            buttons.show();
+        },
+        function() {
+            buttons.hide();
+        }
+    );
+
+    el.find('.tooltips').tooltip({placement:'bottom', delay : 1500});
+    return el;
+}
+
+
+function artistChanged(artist) {
+    if (artist) {
+        var el = artist.adiv.find('.adiv');
+
+        var pause = el.find('.pause');
+        var play = el.find('.play');
+
+        if (artist === curArtist) {
+            el.addClass('is-current');
+        } else {
+            el.removeClass('is-current');
+        }
+
+        if (artist === curArtist && audioIsPlaying()) {
+            play.hide();
+            pause.show();
+        } else {
+            play.show();
+            pause.hide();
+        }
+    }
+}
+
+function playArtist(artist) {
+
+    if (artist === curArtist) {
+        togglePausePlay();
+    } else {
+        var oldArtist = curArtist;
+        curArtist = artist;
+        var track = artist.tracks[artist.curTrack];
+        artistChanged(oldArtist);
+        playTrack(track);
+        ga_track('frog', 'play',  artist.name);
+    }
+}
+
+function playTrack(track) {
+    audio.attr('src', track['audio']);
+    audio.get(0).play();
+}
+
+function audioIsPlaying() {
+    return !audio.get(0).paused;
+}
+
+function togglePausePlay() {
+    if (audio.get(0).paused) {
+        audio.get(0).play();
+    } else {
+        audio.get(0).pause();
+    }
+}
+
+function playNext() {
+    if (curArtist) {
+        if (curArtist.which + 1 < curArtistPath.length) {
+            playArtist(curArtistPath[curArtist.which + 1]);
+        } else {
+            curArtist = null;
+        }
+    }
+}
+
+function showPlayer(artist, bypass) {
+    if (artist.tracks.length > 0) {
+        var track = artist.tracks[artist.curTrack];
+        var player = artist.adiv;
+        player.html(getPlayer(artist, bypass));
+    } else {
+        var player = artist.adiv;
+        player.html(getNoPlayer(artist, bypass));
+    }
+}
+
+function showPath(path) {
+    fixPath(path);
+    console.log("show playlist");
+    showPlaylist(path);
+    $("#list").show();
+    $("#xbuttons").show();
+    tweetSetup();
+}
+
+function showPlaylist(path) {
+    var trackDivList = $("#list");
+    _.each(path,
+        function(artist, index, list) {
+            var bypass = index > 0 && index < list.length -1;
+            artist.adiv = $("<div>").attr('class', 'tadiv');
+            artist.which = index;
+            artist.curTrack = randomIndex(artist.tracks);
+            trackDivList.append(artist.adiv);
+            showPlayer(artist, bypass);
+        }
+    );
+}
+
+function getCurTrack(artist) {
+    if ('tracks' in artist && artist.tracks.length > 0) {
+        var track = artist.tracks[artist.curTrack];
+        return track;
+    } else {
+        return null;
+    }
+}
+
+function getCurTracks() {
+    var curTracks = [];
+    for (var i = 0; i < curArtistPath.length; i++) {
+        var artist = curArtistPath[i];
+        var track = getCurTrack(artist);
+        if (track) {
+            curTracks.push('spotify:track:' + track.id);
+        }
+    }
+    return curTracks;
+}
+
+function filterDupTracks(tracks) {
+    return tracks;
+}
+
+
+function addChangeTrack(button, artist) {
+    button.click( function() {
+        artist.curTrack += 1;
+        if (artist.curTrack >= artist.tracks.length) {
+            artist.curTrack = 0;
+        }
+
+        var track = artist.tracks[artist.curTrack];
+        var player = artist.adiv;
+        player.find('.title').text(track.name);
+        player.find('.adiv').css('background-image', 'url(' +  track.image  +')');
+
+        if (artist == curArtist && audioIsPlaying()) {
+            playTrack(track);
+        }
+
+        ga_track('frog', 'new-track',  artist.name);
+    });
+}
+
+function fetchPath(source, dest) {
+    ga_track('frog', 'fetchPath',  source + ' ==== ' + dest);
+    var url = "http://labs2.echonest.com/ArtistGraphServer/find_path";
+    var url = url_prefix + "path";
+
+    $("#xbuttons").hide();
+    info("Creating path between " + source + " and " + dest);
+    setURL(source, dest, skipList);
+    $.getJSON(url, {src : source, dest : dest, skips:skipList.join(",")}, function(data) {
+            var list = $("#list");
+            list.empty();
+            if (data.status == 'ok' && data.path.length >= 2) {
+                info("");
+                curArtistPath = data.path;
+                var msg = 'Found a path from ' + data.path[0].name + ' to ' + data.path[data.path.length -1].name + ' in '
+                    + data.path.length + ' tracks. '
+                info(msg);
+                showPath(curArtistPath);
+                let firstArtist = curArtistPath[0].name;
+                let lastArtist = curArtistPath[curArtistPath.length - 1].name;
+                $("#source").val(firstArtist);
+                $("#dest").val(lastArtist);
+                $("#time-info").show();
+                $("#path-time").text(Math.round(data.pdelta));
+                $("#total-time").text(Math.round(data.fdelta));
+            } else {
+                error("Sorry, "  + data.reason);
+            }
+        }
+    );
+}
+
+function fixPath(path) {
+    _.each(path, function(artist) {
+        fixArtist(artist);
+    });
+}
+
+function fixArtist(artist) {
+    if (!("full_tracks" in artist) ) {
+        artist.full_tracks = artist.tracks;
+        let ntracks = [];
+        _.each(artist.tracks, function(track) {
+            if (track.audio != null) {
+                ntracks.push(track);
+            }
+        });
+        artist.tracks = ntracks;
+    }
+}
+
+function fetchSims(artist) {
+    ga_track('frog', 'fetchSims',  artist);
+    var url = url_prefix + "sims";
+
+
+    $("#xbuttons").hide();
+    info("Showing near neighbors for " + artist);
+    setURL(artist, "", []);
+    $.getJSON(url, {artist : artist}, function(data) {
+            var list = $("#list");
+            list.empty();
+            if (data.status == 'ok') {
+                info("");
+                curArtistPath = data.sims;
+                var msg = 'Similar artists to ' + data.seed.name;
+                info(msg);
+                showPath(curArtistPath);
+                $("#time-info").show();
+                $("#path-time").text(Math.round(data.time * 1000));
+            } else {
+                error("Sorry, Can't find sims for " + artist);
+            }
+        }
+    );
+}
+
+
+function error(msg) {
+    $("#info").text(msg);
+}
+
+function info(msg) {
+    $("#info").text(msg);
+}
+
+function now() {
+    return new Date().getTime();
+}
+
+function urldecode(str) {
+   return decodeURIComponent((str+'').replace(/\+/g, '%20'));
+}
+
+function processParams() {
+    var params = {};
+    var q = document.URL.split('?')[1];
+    if(q != undefined){
+        q = q.split('&');
+        for(var i = 0; i < q.length; i++){
+            var pv = q[i].split('=');
+            var p = pv[0];
+            var v = pv[1];
+            params[p] = urldecode(v);
+        }
+    }
+
+    if ('src' in params && 'dest' in params) {
+        var src = params['src'];
+        var dest = params['dest'];
+        if ('skip' in params) {
+            skipList = params['skip'].split(',')
+        }
+        $("#source").val(src);
+        $("#dest").val(dest);
+        generatePath();
+    } else {
+        $("#source").val('Weezer');
+        $("#dest").val('Lady Gaga');
+    }
+}
+
+function setURL(src, dest, skiplist) {
+    var p = '?src=' + src + '&dest=' + dest;
+    if (skipList && skiplist.length > 0) {
+        p += '&skip=' + skiplist.join()
+    }
+    history.replaceState({}, document.title, p);
+}
+
+function addNavigation() {
+    $("#show-search").click(
+        function() {
+           $(".option").removeClass("option-active");
+           $(this).addClass("option-active");
+           $('#search').show();
+           $('#main').show();
+           $('#gallery').hide();
+           $('#about').hide();
+        }
+    );
+
+    $("#show-gallery").click(
+        function() {
+           $(".option").removeClass("option-active");
+           $(this).addClass("option-active");
+           $('#search').hide();
+           $('#main').hide();
+           $('#gallery').show();
+           $('#about').hide();
+        }
+    );
+
+    $("#show-about").click(
+        function() {
+           $(".option").removeClass("option-active");
+           $(this).addClass("option-active");
+           $('#search').hide();
+           $('#main').hide();
+           $('#gallery').hide();
+           $('#about').show();
+        }
+    );
+}
+
+$(document).ready(
+    function() {
+        $(".gen-input").keyup(
+            function(event) {
+                if (event.keyCode == 13) {
+                    clearSkips();
+                    generatePath();
+                }
+            }
+        );
+
+        $("#go").click(function() {
+            clearSkips();
+            generatePath();
+        });
+
+        /*
+        R.player.on("change:playingTrack", function(track) {
+            if (track === null) {
+                playNext();
+            }
+        });
+
+        R.player.on("change:playState", function(state) {
+            artistChanged(curArtist);
+        });
+
+        R.player.on("change:playingSource", function(track) {
+            artistChanged(curArtist);
+        });
+        */
+
+        audio.on('pause', function() {
+            artistChanged(curArtist);
+        });
+
+        audio.on('play', function() {
+            artistChanged(curArtist);
+        });
+
+        audio.on('ended', function() {
+            playNext();
+        });
+
+        addNavigation();
+        tweetSetup();
+        processParams();
+
+        showPopular();
+        showRecents();
+    }
+);
+
+
+function showPopular() {
+    var url = url_prefix + "popular";
+    $.getJSON(url, {}, function(data) {
+            var list = $("#popular-list");
+            list.empty();
+            if (data.status == 'ok') {
+                _.each(data.popular, function(entry) {
+                    var a = $("<a>").attr("href", "?src="+ "spotify:artist:" + entry.src +"&dest=" +  "spotify:artist:" + entry.dest).
+                        text(entry.text);
+                    var li = $("<li>").append(a);
+                    list.append(li);
+                });
+            }
+        }
+    );
+}
+
+function showRecents() {
+    var url = url_prefix + "history";
+    $.getJSON(url, {}, function(data) {
+            var list = $("#recent-list");
+            list.empty();
+            if (data.status == 'ok') {
+                _.each(data.history, function(entry) {
+                    var a = $("<a>").attr("href", "?src="+ 'spotify:artist:' + entry.src +"&dest=" + 'spotify:artist:' + entry.dest).
+                        text(entry.text);
+                    var li = $("<li>").append(a);
+                    list.append(li);
+                });
+            }
+        }
+    );
+}
+
+function ga_track(page, action, id) {
+    _gaq.push(['_trackEvent', page, action, id]);
+}
+
+
+function getPlaylistTitle() {
+    var source = $("#source").val();
+    var dest = $("#dest").val();
+    var title = "";
+
+    if (source && dest) {
+        title = "From " + source + " to " + dest;
+    } else if (source) {
+        title = "Similar to " + source;
+    }
+    return title;
+}
+
+function savePlaylist() {
+    var title = getPlaylistTitle();
+    var g_tracks = getCurTracks();
+
+    var client_id = '';
+    var redirect_uri = '';
+
+	if (location.host == 'localhost:8000') {
+		client_id = 'd37a9e88667b4fb3bc994299de2a52bd';
+		redirect_uri = 'http://localhost:8000/callback.html';
+	} else {
+		client_id = 'f2ebb64570a64854803bd4c1426f279a';
+		redirect_uri = 'http://static.echonest.com/BoilTheFrog/callback.html';
+	}
+
+    var url = 'https://accounts.spotify.com/authorize?client_id=' + client_id +
+        '&response_type=token' +
+        '&scope=playlist-read-private%20playlist-modify%20playlist-modify-private' +
+        '&redirect_uri=' + encodeURIComponent(redirect_uri);
+    localStorage.setItem('createplaylist-tracks', JSON.stringify(g_tracks));
+    localStorage.setItem('createplaylist-name', title);
+    var w = window.open(url, 'asdf', 'WIDTH=400,HEIGHT=500');
+}
+
+
+function tweetSetup() {
+    $(".twitter-share-button").remove();
+    var tweet = $('<a>')
+        .attr('href', "https://twitter.com/share")
+        .attr('id', "tweet")
+        .attr('class', "twitter-share-button")
+        .attr('data-lang', "en")
+        .attr('data-size', "large")
+        .attr('data-count', "none")
+        .text('Tweet');
+
+    $("#tweet-span").prepend(tweet);
+
+    var msg = 'Create seamless, genre-transitioning playlists with #boilthefrog';
+    if (curArtistPath.length > 0) {
+        var msg = 'I made a ' + curArtistPath.length + ' track playlist from ' + curArtistPath[0].name
+            + ' to ' + curArtistPath[curArtistPath.length -1].name + ' with #boilthefrog'
+    }
+    tweet.attr('data-text', msg);
+    tweet.attr('data-url', document.URL);
+
+    // twitter can be troublesome. If it is not there, don't bother loading it
+    if ('twttr' in window && twttr.widgets) {
+        twttr.widgets.load();
+    }
+}
+
+
+</script>
+<script src="https://sp-bootstrap.global.ssl.fastly.net/8.2.0/sp-bootstrap.min.js"></script>
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3675615-11']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
 </html>
