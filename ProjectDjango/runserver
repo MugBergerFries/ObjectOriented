@@ -1,2 +1,5 @@
 #!/bin/bash
+export SPOTIPY_CLIENT_ID='0ffe4f5e083f464f8ad6061cd80785ca'
+export SPOTIPY_CLIENT_SECRET='e1c15024a0c744a792d729510575a0ca'
+export SPOTIPY_REDIRECT_URI='http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/'
 exec ./manage.py runserver 0.0.0.0:80
