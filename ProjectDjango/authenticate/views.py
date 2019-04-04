@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
+import json
 import spotipy
 import spotipy.util as util
+
+client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
+client_secret = 'e1c15024a0c744a792d729510575a0ca'
+redirect_uri = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about/'
 
 
 def home(request):
@@ -14,4 +20,17 @@ def about(request):
 
 
 def login(request):
-    return render(request, 'authenticate/about.html')
+    return redirect('https://accounts.spotify.com/authorize?' + json.dumps({
+        "response_type": 'code',
+        "client_id": client_id,
+        "scope": 'user-library-read',
+        "redirect_uri": redirect_uri
+    }))
+
+
+def callback(request):
+    return
+
+
+def refresh_token(request):
+    return
