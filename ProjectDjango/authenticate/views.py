@@ -21,10 +21,10 @@ def about(request):
 
 def login(request):
     return redirect('https://accounts.spotify.com/authorize?' + json.dumps({
-        "response_type": 'code',
-        "client_id": client_id,
-        "scope": 'user-library-read',
-        "redirect_uri": redirect_uri
+        'response_type': 'code',
+        'client_id': client_id,
+        'scope': 'user-library-read',
+        'redirect_uri': redirect_uri
     }))
 
 
