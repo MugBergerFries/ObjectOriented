@@ -11,6 +11,23 @@ redirect_uri2 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about/
 token = 'NULL'
 
 
+def pretty_print_POST(req):
+    """
+    At this point it is completely built and ready
+    to be fired; it is "prepared".
+
+    However pay attention at the formatting used in
+    this function because it is programmed to be pretty
+    printed and may differ from the actual request.
+    """
+    print('{}\n{}\n{}\n\n{}'.format(
+        '-----------START-----------',
+        req.method + ' ' + req.url,
+        '\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
+        req.body,
+    ))
+
+
 def home(request):
     HttpResponse('https://api.spotify.com/v1/artists/{3TVXtAsR1Inumwj472S9r4}')
     return render(request, 'authenticate/index.html')
@@ -34,7 +51,7 @@ def callback(request):
     payload = {'grant_type': 'authorization_code', 'code': code, 'redirect_uri': redirect_uri2}
     r = requests.post('https://accounts.spotify.com/api/token',
                       headers={'Authorization': ('Basic ' + encoded.decode('utf-8'))}, data=payload)
-    print(r.url)
+    print(r.content)
     return render(request, 'authenticate/about.html')
 
 
