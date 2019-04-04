@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-import requests
+import urllib.request
+from urllib.parse import urlencode, quote_plus
 import base64
 import os
 
@@ -30,13 +31,14 @@ def callback(request):
     if code == '':
         print("AN ERROR OCCURRED, REDIRECTING HOME")
         return render(request, 'authenticate/index.html')
-    encoded = base64.b64encode((client_id + ':' + os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8'))
+    url = 'https://accounts.spotify.com/api/token'
+    encoded = base64.standard_b64encode(client_id + ':' + os.environ['SPOTIPY_CLIENT_SECRET'])
     payload = {'grant_type': 'authorization_code', 'code': code, 'redirect_uri': redirect_uri2}
-    r = requests.post('https://accounts.spotify.com/api/token',data=payload,
-                      headers={'Authorization': ('Basic ' + encoded.decode('utf-8'))})
-    print(r.request.headers)
-    print(r.request.body)
-    print(r.text)
+    headers = {'Authorization': 'Basic ' + encoded}
+    payload_enc = urlencode(payload, quote_via=quote_plus)
+    req = urllib.request.Request(url, payload_enc, headers)
+    res = urllib.request.urlopen(req)
+    print(res)
     return render(request, 'authenticate/about.html')
 
 
