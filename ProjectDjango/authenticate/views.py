@@ -6,7 +6,7 @@ import spotipy
 import spotipy.util as util
 
 client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
-redirect_uri = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about/'
+redirect_uri = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/callback/'
 
 
 def home(request):
@@ -24,6 +24,7 @@ def login(request):
 
 
 def callback(request):
+    print("HERE: " + request)
     return
 
 
