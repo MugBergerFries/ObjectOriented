@@ -35,9 +35,11 @@ def test():
 
 
 def home(request):
+    test()
     HttpResponse('https://api.spotify.com/v1/artists/{3TVXtAsR1Inumwj472S9r4}')
     return render(request, 'authenticate/home.html')
 
 
 def about(request):
+    test()
     return render(request, 'authenticate/about.html')
