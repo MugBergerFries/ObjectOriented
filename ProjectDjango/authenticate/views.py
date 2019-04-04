@@ -7,7 +7,7 @@ import os
 
 client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
 redirect_uri1 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/callback/'
-redirect_uri2 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about/'
+redirect_uri2 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/'
 token = 'NULL'
 
 
