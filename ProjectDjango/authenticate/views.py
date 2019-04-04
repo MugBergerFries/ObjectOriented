@@ -20,7 +20,7 @@ def about(request):
 
 def login(request):
     return redirect('https://accounts.spotify.com/authorize?client_id=' + client_id + '&response_type=code'
-                    '&redirect_uri=' + redirect_uri + '&scope=user-library-read')
+                    '&redirect_uri=' + redirect_uri + '&scope=user-read-private')
 
 
 def callback(request):
