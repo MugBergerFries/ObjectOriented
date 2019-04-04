@@ -32,7 +32,7 @@ def callback(request):
         print("AN ERROR OCCURRED, REDIRECTING HOME")
         return render(request, 'authenticate/index.html')
     url = 'https://accounts.spotify.com/api/token'
-    encoded = base64.standard_b64encode(client_id + ':' + os.environ['SPOTIPY_CLIENT_SECRET'])
+    encoded = base64.standard_b64encode((client_id + ':' + os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8')).decode('utf-8')
     payload = {'grant_type': 'authorization_code', 'code': code, 'redirect_uri': redirect_uri2}
     headers = {'Authorization': 'Basic ' + encoded}
     payload_enc = urlencode(payload, quote_via=quote_plus)
