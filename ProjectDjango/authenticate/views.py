@@ -20,12 +20,12 @@ def about(request):
 
 
 def login(request):
-    return redirect('https://accounts.spotify.com/authorize?' + json.dumps({
+    return redirect(('https://accounts.spotify.com/authorize?' + json.dumps({
         'client_id': client_id,
         'response_type': 'code',
         'redirect_uri': redirect_uri,
         'scope': 'user-library-read'
-    })).strip('"')
+    })).strip('"'))
 
 
 def callback(request):
