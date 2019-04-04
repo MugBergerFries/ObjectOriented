@@ -53,6 +53,7 @@ def callback(request):
                       headers={'Authorization': ('Basic ' + encoded.decode('utf-8'))}, data=payload)
     print(r.request.headers)
     print(r.request.body)
+    print(r.text)
     return render(request, 'authenticate/about.html')
 
 
