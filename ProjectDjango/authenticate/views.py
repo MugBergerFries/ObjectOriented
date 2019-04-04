@@ -6,7 +6,6 @@ import spotipy
 import spotipy.util as util
 
 client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
-client_secret = 'e1c15024a0c744a792d729510575a0ca'
 redirect_uri = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about/'
 
 
@@ -20,12 +19,8 @@ def about(request):
 
 
 def login(request):
-    return redirect(('https://accounts.spotify.com/authorize?' + json.dumps({
-        'client_id': client_id,
-        'response_type': 'code',
-        'redirect_uri': redirect_uri,
-        'scope': 'user-library-read'
-    })).strip('"'))
+    return redirect('https://accounts.spotify.com/authorize?client_id=' + client_id + '&response_type=code'
+                    '&redirect_uri=' + redirect_uri + '&scope=user-library-read')
 
 
 def callback(request):
