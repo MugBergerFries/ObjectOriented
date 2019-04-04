@@ -24,7 +24,7 @@ def login(request):
 
 
 def callback(request):
-    print("HERE: " + request)
+    print("HERE: " + request.build_absolute_uri())
     return
 
 
