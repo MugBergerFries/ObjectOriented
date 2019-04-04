@@ -24,7 +24,8 @@ def login(request):
 
 
 def callback(request):
-    print("HERE: " + request.build_absolute_uri())
+    test = request.GET.get('code', '')
+    print(test)
     return
 
 
