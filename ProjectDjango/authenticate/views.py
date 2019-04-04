@@ -25,7 +25,7 @@ def login(request):
         'response_type': 'code',
         'redirect_uri': redirect_uri,
         'scope': 'user-library-read'
-    }))
+    })).strip('"')
 
 
 def callback(request):
