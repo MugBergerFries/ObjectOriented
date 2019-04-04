@@ -49,7 +49,7 @@ def callback(request):
         return render(request, 'authenticate/index.html')
     encoded = base64.b64encode((client_id + ':' + os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8'))
     payload = {'grant_type': 'authorization_code', 'code': code, 'redirect_uri': redirect_uri2}
-    r = requests.post('https://accounts.spotify.com/api/token',
+    r = requests.post('http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/callback/',
                       headers={'Authorization': ('Basic ' + encoded.decode('utf-8'))}, data=payload)
     print(r.content)
     return render(request, 'authenticate/about.html')
@@ -57,3 +57,6 @@ def callback(request):
 
 def refresh_token(request):
     return
+
+
+#https://accounts.spotify.com/api/token
