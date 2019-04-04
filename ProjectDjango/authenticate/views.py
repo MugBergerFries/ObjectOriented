@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-import urllib.request
-from urllib.parse import urlencode, quote_plus
+import requests
 import base64
 import os
 
@@ -33,12 +32,12 @@ def callback(request):
         return render(request, 'authenticate/index.html')
     url = 'https://accounts.spotify.com/api/token'
     encoded = base64.standard_b64encode((client_id + ':' + os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8')).decode('utf-8')
-    payload = {'grant_type': 'authorization_code', 'code': code, 'redirect_uri': redirect_uri2}
+    payload = {'grant_type': 'authorization_code', 'code': str(code), 'redirect_uri': redirect_uri2}
     headers = {'Authorization': 'Basic ' + encoded}
-    payload_enc = urlencode(payload, quote_via=quote_plus).encode('utf-8')
-    req = urllib.request.Request(url, payload_enc, headers)
-    res = urllib.request.urlopen(req)
-    print(res)
+    req = requests.post(url, data=payload, headers=headers)
+    print(req.request.headers)
+    print(req.request.body)
+    print(req.text)
     return render(request, 'authenticate/about.html')
 
 
