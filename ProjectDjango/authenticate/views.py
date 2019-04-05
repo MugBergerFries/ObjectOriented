@@ -28,12 +28,12 @@ def login(request):
 
 def callback(request):
     code = request.GET.get('code', '')
-    print("AT CALLBACK, CODE IS " + code)
+    print("AT CALLBACK, OS IS " + os.environ['SPOTIPY_CLIENT_SECRET'])
     if code == '':
         print("AN ERROR OCCURRED, REDIRECTING HOME")
         return render(request, 'authenticate/index.html')
     url = 'https://accounts.spotify.com/api/token'
-    encoded = base64.standard_b64encode((client_id + ':' + os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8')).decode('utf-8')
+    encoded = base64.b64encode("{}:{}".format(client_id, os.environ['SPOTIPY_CLIENT_SECRET']))#.encode('utf-8')).decode('utf-8')
     payload = {"grant_type": "authorization_code", "code": str(code), "redirect_uri": redirect_uri2}
     headers = {'Authorization': 'Basic ' + encoded}
     req = requests.post(url, data=payload, headers=headers)
