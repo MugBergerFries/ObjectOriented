@@ -21,13 +21,14 @@ def about(request):
 
 
 def login(request):
+    print("AT LOGIN\n")
     return redirect('https://accounts.spotify.com/authorize?client_id=' + client_id + '&response_type=code'
                     '&redirect_uri=' + redirect_uri1 + '&scope=user-read-private')
 
 
 def callback(request):
     code = request.GET.get('code', '')
-    print("CODE IS " + code)
+    print("AT CALLBACK, CODE IS " + code)
     if code == '':
         print("AN ERROR OCCURRED, REDIRECTING HOME")
         return render(request, 'authenticate/index.html')
