@@ -35,7 +35,7 @@ def callback(request):
         return render(request, 'authenticate/index.html')
     url = 'https://accounts.spotify.com/api/token'
     encoded = base64.b64encode("{}:{}".format(client_id, os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8')).decode('utf-8')
-    payload = {"grant_type": "authorization_code", "code": str(code), "redirect_uri": urllib.parse.quote_plus(redirect_uri2)}
+    payload = {"grant_type": "authorization_code", "code": str(code), "redirect_uri": redirect_uri2}
     headers = {'Authorization': 'Basic ' + encoded}
     req = requests.post(url, data=payload, headers=headers)
     print(req.request.headers)
