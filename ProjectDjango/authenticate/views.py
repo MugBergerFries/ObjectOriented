@@ -5,11 +5,27 @@ import urllib.parse
 import requests
 import base64
 import os
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
 client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
 redirect_uri1 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/callback/'
 redirect_uri2 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about'
 token = 'NULL'
+
+client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret='e1c15024a0c744a792d729510575a0ca')
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+playlists = sp.user_playlists('1236360620')
+while playlists:
+    for playlist in playlists['items']:
+        playlist_list.append(playlist['name'])
+    if playlists['next']:
+        playlists = sp.next(playlists)
+    else:
+        playlists = None
+
+
 
 
 def home(request):
@@ -18,7 +34,8 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'authenticate/about.html')
+    info = playlist_list
+    return render(request, 'authenticate/about.html', info)
 
 
 def login(request):
