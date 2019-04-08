@@ -31,6 +31,7 @@ print("Should be printing")
 
 
 
+
 def test(request):
     return HttpResponse('<p1>Hi</p1>')
 
@@ -65,8 +66,10 @@ def callback(request):
     token = response_list['access_token']
     print("TOKEN: " + token)
 
-    info = playlist_list
-    return render(request, 'authenticate/about.html', info)
+    context = {
+        'playlist_list': playlist_list
+    }
+    return render(request, 'authenticate/about.html', context)
 
 
 def refresh_token(request):
