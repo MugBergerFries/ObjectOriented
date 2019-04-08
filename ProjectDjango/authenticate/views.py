@@ -25,6 +25,7 @@ while playlists:
         playlists = sp.next(playlists)
     else:
         playlists = None
+print(playlist_list)
 
 
 
