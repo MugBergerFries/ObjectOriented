@@ -63,9 +63,6 @@ def callback(request):
     token = response_list['access_token']
     print("TOKEN: " + token)
 
-    info = playlist_list
-    return render(request, 'authenticate/about.html', info)
-
 
 def refresh_token(request):
     return
