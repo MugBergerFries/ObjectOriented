@@ -26,21 +26,8 @@ def home(request):
 
 
 def about(request):
-    client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret='e1c15024a0c744a792d729510575a0ca')
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-    playlists = sp.user_playlists('1236360620')
-    playlist_list = []
-    while playlists:
-        for playlist in playlists['items']:
-            playlist_list.append(playlist['name'])
-        if playlists['next']:
-            playlists = sp.next(playlists)
-        else:
-            playlists = None
-    print(playlist_list)
-    print("Should be printing")
-    return render(request, 'authenticate/about.html', playlist_list)
+    #info = playlist_list
+    return render(request, 'authenticate/about.html')
 
 
 def login(request):
@@ -62,7 +49,8 @@ def callback(request):
     response_list = req.json()
     token = response_list['access_token']
     print("TOKEN: " + token)
-    return render(request, 'authenticate/about.html')
+    info = playlist_list
+    return render(request, 'authenticate/about.html', info)
 
 
 def refresh_token(request):
