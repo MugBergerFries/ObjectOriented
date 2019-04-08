@@ -62,7 +62,7 @@ def callback(request):
     print("USER", user)
     resp = user.json()
     username = resp['id']
-    playlists = sp.user_playlists('username')
+    playlists = sp.user_playlists(username)
     playlist_list = []
     while playlists:
         for playlist in playlists['items']:
