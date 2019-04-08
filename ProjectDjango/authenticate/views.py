@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-import urllib.parse
 import requests
 import base64
 import os
@@ -14,11 +13,6 @@ redirect_uri2 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about'
 token = 'NULL'
 
 
-
-
-
-
-
 def test(request):
     return HttpResponse('<p1>Hi</p1>')
 
@@ -29,7 +23,7 @@ def home(request):
 
 
 def about(request):
-    #info = playlist_list
+    # info = playlist_list
     return render(request, 'authenticate/about.html')
 
 
@@ -44,7 +38,8 @@ def callback(request):
         print("AN ERROR OCCURRED, REDIRECTING HOME")
         return render(request, 'authenticate/index.html')
     url = 'https://accounts.spotify.com/api/token'
-    encoded = base64.b64encode("{}:{}".format(client_id, os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8')).decode('utf-8')
+    encoded = base64.b64encode("{}:{}".format(client_id, os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8')).decode(
+        'utf-8')
     payload = {"grant_type": "authorization_code", "code": str(code), "redirect_uri": redirect_uri1}
     headers = {'Authorization': 'Basic ' + encoded}
     req = requests.post(url, data=payload, headers=headers)
@@ -53,10 +48,11 @@ def callback(request):
     token = response_list['access_token']
     print("TOKEN: " + token)
 
-    client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret='e1c15024a0c744a792d729510575a0ca')
+    client_credentials_manager = SpotifyClientCredentials(client_id=client_id,
+                                                          client_secret='e1c15024a0c744a792d729510575a0ca')
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-    #get users information
+    # get users information
     headers = {'Authorization': 'Bearer ' + token}
     user = requests.get('https://api.spotify.com/v1/me', headers=headers)
     print("USER", user)
