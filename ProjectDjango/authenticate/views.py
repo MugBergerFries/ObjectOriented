@@ -58,8 +58,8 @@ def callback(request):
 
     #get users information
     user = requests.get('https://api.spotify.com/v1/me')
-    username = user['id']
-    playlists = sp.user_playlists(username)
+    print("USER", user)
+    playlists = sp.user_playlists('1236360620')
     playlist_list = []
     while playlists:
         for playlist in playlists['items']:
