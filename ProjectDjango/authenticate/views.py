@@ -71,7 +71,8 @@ def callback(request):
     context = {
         'playlist_list': playlist_list
     }
-    return render(request, 'authenticate/about.html', context)
+    return redirect('/prune')
+    # render(request, 'authenticate/about.html', context)
 
 
 def refresh_token(request):
