@@ -35,7 +35,7 @@ def home(request):
 
 def about(request):
     info = playlist_list
-    return render(request, 'authenticate/about.html', info)
+    return render(request, 'authenticate/about.html')
 
 
 def login(request):
@@ -57,7 +57,9 @@ def callback(request):
     response_list = req.json()
     token = response_list['access_token']
     print("TOKEN: " + token)
-    return render(request, 'authenticate/about.html')
+
+    info = playlist_list
+    return render(request, 'authenticate/about.html', info)
 
 
 def refresh_token(request):
