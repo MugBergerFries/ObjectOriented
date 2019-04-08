@@ -26,6 +26,7 @@ while playlists:
     else:
         playlists = None
 print(playlist_list)
+print("Should be printing")
 
 
 
