@@ -29,7 +29,7 @@ while playlists:
 
 
 def test(request):
-    return HttpResponse('<p1>Hi</p1>'')
+    return HttpResponse('<p1>Hi</p1>')
 
 
 def home(request):
