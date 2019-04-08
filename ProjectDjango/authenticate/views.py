@@ -56,8 +56,10 @@ def callback(request):
     client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret='e1c15024a0c744a792d729510575a0ca')
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-
-    playlists = sp.user_playlists('1236360620')
+    #get users information
+    user = requests.get(https://api.spotify.com/v1/me)
+    username = user['id']
+    playlists = sp.user_playlists(username)
     playlist_list = []
     while playlists:
         for playlist in playlists['items']:
