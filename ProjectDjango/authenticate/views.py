@@ -17,6 +17,7 @@ client_credentials_manager = SpotifyClientCredentials(client_id=client_id, clien
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 playlists = sp.user_playlists('1236360620')
+playlist_list = []
 while playlists:
     for playlist in playlists['items']:
         playlist_list.append(playlist['name'])
