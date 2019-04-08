@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
+from django.urls import reverse
+from urllib.parse import urlencode
 import requests
 import base64
 import os
@@ -71,7 +73,10 @@ def callback(request):
     context = {
         'playlist_list': playlist_list
     }
-    return redirect('/prune')
+    base_url = reverse('prune:choose')
+    query = urlencode({'context': context})
+    url = '{}?{}'.format(base_url, query)
+    return redirect(url)
     # render(request, 'authenticate/about.html', context)
 
 
