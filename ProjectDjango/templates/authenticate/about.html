@@ -7,5 +7,10 @@
   <body>
     <h1>About this page</h1>
       <p>This is a project created for CSCI 4448 at the University of Colorado, Boulder. It is created by Sam Berger, Sam Busser, and Jasmine Bascom. </p>
+    {% for playlist in info %}
+      <p> {{playlist}} </p>
+    {% endfor %}
+
+      <p>Should see playlists above this</p>
   </body>
 </html>
