@@ -62,8 +62,6 @@ def callback(request):
     response_list = req.json()
     token = response_list['access_token']
     print("TOKEN: " + token)
-
-    #info = playlist_list
     return render(request, 'authenticate/about.html')
 
 
