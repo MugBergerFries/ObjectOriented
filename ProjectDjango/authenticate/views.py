@@ -59,7 +59,7 @@ def callback(request):
     #get users information
     headers = {'Authorization': 'Bearer ' + token}
     req = requests.get('https://api.spotify.com/v1/me', headers=headers)
-    print("USER", users)
+    print("USER", req)
     playlists = sp.user_playlists('1236360620')
     playlist_list = []
     while playlists:
