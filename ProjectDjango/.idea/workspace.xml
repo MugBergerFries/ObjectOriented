@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097f5879-5e41-4187-b563-f7fb9710af1e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/prune/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/prune/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectDjango/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectDjango/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ProjectDjango/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
+            <state relative-caret-position="238">
               <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
             </state>
           </provider>
@@ -30,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authenticate/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="614">
@@ -84,7 +85,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ProjectDjango/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
@@ -125,12 +126,12 @@
       <list>
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/../OOProject/testFile.py" />
-        <option value="$PROJECT_DIR$/ProjectDjango/settings.py" />
         <option value="$PROJECT_DIR$/authenticate/urls.py" />
         <option value="$PROJECT_DIR$/authenticate/views.py" />
         <option value="$PROJECT_DIR$/prune/views.py" />
-        <option value="$PROJECT_DIR$/ProjectDjango/urls.py" />
         <option value="$PROJECT_DIR$/prune/urls.py" />
+        <option value="$PROJECT_DIR$/ProjectDjango/settings.py" />
+        <option value="$PROJECT_DIR$/ProjectDjango/urls.py" />
       </list>
     </option>
   </component>
@@ -236,12 +237,12 @@
       <workItem from="1554494102859" duration="6658000" />
       <workItem from="1554702668470" duration="473000" />
       <workItem from="1554707325828" duration="168000" />
-      <workItem from="1554757038589" duration="6742000" />
+      <workItem from="1554757038589" duration="8305000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36170000" />
+    <option name="totallyTimeSpent" value="37733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
@@ -281,13 +282,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectDjango/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/authenticate/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -312,16 +306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prune/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/authenticate/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -339,12 +323,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProjectDjango/urls.py">
+    <entry file="file://$PROJECT_DIR$/authenticate/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="614">
+          <caret line="75" column="28" lean-forward="true" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
           <folding>
-            <element signature="e#637#669#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prune/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -359,12 +353,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/authenticate/views.py">
+    <entry file="file://$PROJECT_DIR$/ProjectDjango/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="75" column="28" lean-forward="true" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+        <state relative-caret-position="238">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjectDjango/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#637#669#0" expanded="true" />
           </folding>
         </state>
       </provider>
