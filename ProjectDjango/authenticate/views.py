@@ -73,11 +73,11 @@ def callback(request):
     context = {
         'playlist_list': playlist_list
     }
-    # base_url = reverse('prune:choose')
-    # query = urlencode({'context': context})
-    # url = '{}?{}'.format(base_url, query)
-    # return redirect(url)
-    render(request, 'authenticate/about.html', context)
+    base_url = reverse('prune:choose')
+    query = urlencode({'context': context})
+    url = '{}?{}'.format(base_url, query)
+    return redirect(url)
+    # render(request, 'authenticate/about.html', context)
 
 
 def refresh_token(request):
