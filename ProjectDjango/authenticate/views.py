@@ -77,7 +77,7 @@ def callback(request):
     # query = urlencode({'context': context})
     # url = '{}?{}'.format(base_url, query)
     # return redirect(url)
-    render(request, 'authenticate/about.html', context)
+    return render(request, 'authenticate/about.html', context)
 
 
 def refresh_token(request):
