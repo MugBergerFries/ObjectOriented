@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['ec2-18-191-18-199.us-east-2.compute.amazonaws.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'django_extensions'
     #'authenticate.apps.AuthenticateConfig'
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
