@@ -62,16 +62,18 @@ def callback(request):
     username = resp['id']
     playlists = sp.user_playlists(username)
     playlist_list = []
+    name_id = {}
     while playlists:
         for playlist in playlists['items']:
-            playlist_list.append(playlist['name'])
+            #playlist_list.append(playlist['name'])
+            name_id[playlist['name']] = playlist['id']
         if playlists['next']:
             playlists = sp.next(playlists)
         else:
             playlists = None
 
     context = {
-        'playlist_list': playlist_list
+        'playlist_list': name_id
     }
     # base_url = reverse('prune:choose')
     # query = urlencode({'context': context})

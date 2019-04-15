@@ -6,9 +6,9 @@
   </head>
   <body>
     <h1>Choose your Playlist</h1>
-    {% for playlist in playlist_list %}
+    {% for key, value in playlist_list.items %}
       <!-- <button type="submit" name="name_{{playlist}}" formaction="/prune/magic">{{playlist}}</button> -->
-      <button onclick="window.location.href = '/prune/magic';">{{playlist}}</button>
+      <button onclick="window.location.href = '/prune/magic';">{{key, value}}</button>
       <!-- <a href="/prune/magic" class="btn btn-primary">{{playlist}}</a> -->
     {% endfor %}
   </body>
