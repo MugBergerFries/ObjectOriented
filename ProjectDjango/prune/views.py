@@ -7,3 +7,6 @@ def choose(request):
     context = request.GET.get('context')
     print(context)
     return render(request, 'prune/choose.html')
+
+def magic(request):
+    return render(request, 'prune/magic.html')
