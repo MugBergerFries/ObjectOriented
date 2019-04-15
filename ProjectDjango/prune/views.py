@@ -11,5 +11,5 @@ def choose(request):
 def magic(request):
     if request.method == 'POST':
         form = PriceAssessmentSection1(request.POST)
-        print(request.POST.get())
+        print("LOOK HERE", request.POST.get())
     return render(request, 'prune/magic.html')
