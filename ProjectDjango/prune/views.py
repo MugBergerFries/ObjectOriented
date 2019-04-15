@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 
 
 def choose(request):
-    #context = request.GET.get('context')
+    context = request.GET.get('context')
     print("HERE IS CONTEXT",context)
     return render(request, 'prune/choose.html')
 
