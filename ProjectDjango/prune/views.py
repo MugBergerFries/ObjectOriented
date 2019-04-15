@@ -6,8 +6,8 @@ from django.shortcuts import redirect
 def choose(request):
     # context = request.GET.get('context')
     # print("HERE IS CONTEXT",context)
-    playlist_chosen = request.POST.get('playlist')
-    print("LOOK HERE", playlist_chosen)
+    # playlist_chosen = request.POST.get('playlist')
+    # print("LOOK HERE", playlist_chosen)
     return render(request, 'prune/choose.html')
 
 def magic(request):
