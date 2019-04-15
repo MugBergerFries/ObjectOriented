@@ -9,7 +9,7 @@ def choose(request):
     return render(request, 'prune/choose.html')
 
 def magic(request):
-    print("TEST")
+    print("TEST123")
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
     return render(request, 'prune/magic.html')
