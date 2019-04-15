@@ -8,7 +8,9 @@
     <h1>Choose your Playlist</h1>
     {% for name, id in playlist_list.items %}
       <!-- <button type="submit" name="name_{{playlist}}" formaction="/prune/magic">{{playlist}}</button> -->
-      <button name="id_{{id}}" type="submit" value="1" onclick="window.location.href = '/prune/magic';">{{name}}</button>
+      <!-- <button name="id_{{id}}" type="submit" value="1" onclick="window.location.href = '/prune/magic';">{{name}}</button> -->
+      <input type="radio" id="id_{{id}}" name="id_{{id}}" value="{{name}}"/>
+
       <!-- <a href="/prune/magic" class="btn btn-primary">{{playlist}}</a> -->
     {% endfor %}
   </body>
