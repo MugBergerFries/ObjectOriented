@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 import requests
 from urllib.parse import urlencode
+import requests
 import base64
 import os
 import spotipy
@@ -45,7 +46,7 @@ def magic(request):
     # get users information
     headers = {'Authorization': 'Bearer ' + token}
     #print("ID HERE", test)
-    songs = requests.get('https://api.spotify.com/v1/playlists/'+test+'/tracks', headers=headers)
+    songs = requests.get('https://api.spotify.com/v1/playlists/'+test+'/tracks')
     resp = songs.json()
     print(resp)
     return render(request, 'prune/magic.html')
