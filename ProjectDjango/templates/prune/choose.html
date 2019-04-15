@@ -7,9 +7,15 @@
   <body>
     <h1>Choose your Playlist</h1>
     {% for name, id in playlist_list.items %}
+<<<<<<< HEAD
       <!-- <button type="submit" name="name_{{playlist}}" formaction="/prune/magic">{{playlist}}</button> -->
       <button onclick="window.location.href = '/prune/magic';">{{playlist_list[name]}}</button>
       <!-- <a href="/prune/magic" class="btn btn-primary">{{playlist}}</a> -->
+=======
+      <!-- <button type="submit" name="name_{{id}}" formaction="/prune/magic">{{name}}</button> -->
+      <button name="id_{{id}}" onclick="window.location.href = '/prune/magic';">{{name}}</button>
+      <!-- <a href="/prune/magic" class="btn btn-primary">{{name}}</a> -->
+>>>>>>> 31533e548642bd1f08203a8bc8134774ff046abc
     {% endfor %}
   </body>
 </html>
