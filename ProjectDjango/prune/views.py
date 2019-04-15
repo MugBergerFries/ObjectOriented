@@ -15,5 +15,5 @@ def magic(request):
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
     test = request.GET.get(id)
-    #print("ID HERE", id)
+    print("ID HERE", test)
     return render(request, 'prune/magic.html')
