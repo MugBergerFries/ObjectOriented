@@ -21,5 +21,4 @@ urlpatterns = [
     path('', include('authenticate.urls')),
     path('about/', include('authenticate.urls')),
     path('prune/', include('prune.urls'), name='prune'),
-    path('magic/', include('magic.urls'), name='magic')
 ]
