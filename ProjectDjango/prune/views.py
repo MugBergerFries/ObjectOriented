@@ -19,4 +19,6 @@ def magic(request):
     test = request.GET.get('playlist')
     #print("ID HERE", test)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+test+'/tracks')
+    resp = songs.json()
+    print(resp)
     return render(request, 'prune/magic.html')
