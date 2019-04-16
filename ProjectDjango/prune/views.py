@@ -19,10 +19,6 @@ def magic(request):
     #print("LOOK HERE", request.POST.get())
     test = request.GET.get('playlist')
     #print("ID HERE", test)
-    code = request.GET.get('code', '')
-    if code == '':
-        print("AN ERROR OCCURRED, REDIRECTING HOME")
-        return render(request, 'authenticate/index.html')
     url = 'https://accounts.spotify.com/api/token'
     encoded = base64.b64encode("{}:{}".format(client_id, os.environ['SPOTIPY_CLIENT_SECRET']).encode('utf-8')).decode(
         'utf-8')
