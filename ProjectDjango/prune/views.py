@@ -15,7 +15,7 @@ def choose(request):
 
 def magic(request):
     print("TEST123")
-    headers = {'Authorization': 'Bearer ' + token}
+    #headers = {'Authorization': 'Bearer ' + token}
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
     playlist_id = request.GET.get('playlist')
