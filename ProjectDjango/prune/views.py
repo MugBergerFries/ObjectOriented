@@ -18,9 +18,9 @@ def magic(request):
     #headers = {'Authorization': 'Bearer ' + token}
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
-    token = request.GET.get('context')
-    print("TOKEN:", token)
     playlist_id = request.GET.get('playlist')
+    token = request.GET.get('token')
+    print("TOKEN", token)
     #print("ID HERE", test)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks')
     resp = songs.json()
