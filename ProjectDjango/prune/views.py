@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 import requests
+import base64
+import os
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
 client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
 redirect_uri1 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/magic/'
