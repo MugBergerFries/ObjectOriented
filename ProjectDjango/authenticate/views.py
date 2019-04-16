@@ -79,7 +79,7 @@ def callback(request):
     # query = urlencode({'context': context})
     # url = '{}?{}'.format(base_url, query)
     # return redirect(url)
-    return render(request, 'prune/choose.html', context)
+    return render(request, 'prune/choose.html/?token=token', context)
 
 
 def refresh_token(request):
