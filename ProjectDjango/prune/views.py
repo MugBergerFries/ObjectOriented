@@ -18,7 +18,7 @@ def magic(request):
     #headers = {'Authorization': 'Bearer ' + token}
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
-    token = request.GET.get('token')
+    token = request.GET.get('context')
     print("TOKEN:", token)
     playlist_id = request.GET.get('playlist')
     #print("ID HERE", test)
