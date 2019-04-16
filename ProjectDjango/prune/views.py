@@ -15,11 +15,13 @@ def choose(request):
 
 def magic(request):
     print("TEST123")
+    token = request.session['token']
+    headers = {'Authorization': 'Bearer ' + token}
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
     playlist_id = request.GET.get('playlist')
     #print("ID HERE", test)
-    songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks')
+    songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', headers=headers)
     resp = songs.json()
     print(resp)
     return render(request, 'prune/magic.html')
