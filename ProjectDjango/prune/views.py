@@ -30,17 +30,28 @@ class Song:
         else:
             return 10 * (1 - (diff / maxdiff))
 
-    def closeness(self, song_2_id):  # returns a number 0-10, higher is closer
-        song_2 = Song(song_2_id, self.token)
-        kdiff = self.compare_attribute(self.key, song_2.key, 0, 11)
-        mdiff = self.compare_attribute(self.mode, song_2.mode, 0, 1)
-        adiff = self.compare_attribute(self.acousticness, song_2.acousticness, 0, 1)
-        ddiff = self.compare_attribute(self.danceability, song_2.danceability, 0, 1)
-        ediff = self.compare_attribute(self.energy, song_2.energy, 0, 1)
-        idiff = self.compare_attribute(self.instrumentalness, song_2.instrumentalness, 0, 1)
-        vdiff = self.compare_attribute(self.valence, song_2.valence, 0, 1)
-        tdiff = self.compare_attribute(self.tempo, song_2.tempo, 55, 200)
-        diffs = [kdiff, mdiff, adiff, ddiff, ediff, idiff, vdiff, tdiff]
+    def closeness(self, invar):  # returns a number 0-10, higher is closer
+        if type(invar) is dict:
+            kdiff = self.compare_attribute(self.key, invar['key'], 0, 11)
+            mdiff = self.compare_attribute(self.mode, invar['mode'], 0, 1)
+            adiff = self.compare_attribute(self.acousticness, invar['acousticness'], 0, 1)
+            ddiff = self.compare_attribute(self.danceability, invar['danceability'], 0, 1)
+            ediff = self.compare_attribute(self.energy, invar['energy'], 0, 1)
+            idiff = self.compare_attribute(self.instrumentalness, invar['instrumentalness'], 0, 1)
+            vdiff = self.compare_attribute(self.valence, invar['valence'], 0, 1)
+            tdiff = self.compare_attribute(self.tempo, invar['tempo'], 55, 200)
+            diffs = [kdiff, mdiff, adiff, ddiff, ediff, idiff, vdiff, tdiff]
+        else:
+            song_2 = Song(invar, self.token)
+            kdiff = self.compare_attribute(self.key, song_2.key, 0, 11)
+            mdiff = self.compare_attribute(self.mode, song_2.mode, 0, 1)
+            adiff = self.compare_attribute(self.acousticness, song_2.acousticness, 0, 1)
+            ddiff = self.compare_attribute(self.danceability, song_2.danceability, 0, 1)
+            ediff = self.compare_attribute(self.energy, song_2.energy, 0, 1)
+            idiff = self.compare_attribute(self.instrumentalness, song_2.instrumentalness, 0, 1)
+            vdiff = self.compare_attribute(self.valence, song_2.valence, 0, 1)
+            tdiff = self.compare_attribute(self.tempo, song_2.tempo, 55, 200)
+            diffs = [kdiff, mdiff, adiff, ddiff, ediff, idiff, vdiff, tdiff]
         return sum(diffs) / 8
 
 
