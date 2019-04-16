@@ -18,6 +18,8 @@ class Song:
         self.instrumentalness = round(song_info.json()['instrumentalness'])
         self.valence = song_info.json()['valence']
         self.tempo = song_info.json()['tempo']
+        self.attributes = [self.key, self.mode, self.acousticness, self.danceability, self.energy,
+                           self.instrumentalness, self.valence, self.tempo]
 
     @staticmethod
     def compare_attribute(value1, value2, attrmin, attrmax):  # returns a number from 0-10, higher is closer

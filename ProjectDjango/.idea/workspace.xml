@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/prune/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="391">
+              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -119,12 +119,12 @@
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/../OOProject/testFile.py" />
         <option value="$PROJECT_DIR$/authenticate/urls.py" />
-        <option value="$PROJECT_DIR$/prune/views.py" />
         <option value="$PROJECT_DIR$/prune/urls.py" />
         <option value="$PROJECT_DIR$/ProjectDjango/urls.py" />
         <option value="$PROJECT_DIR$/ProjectDjango/settings.py" />
         <option value="$PROJECT_DIR$/templates/prune/choose.html" />
         <option value="$PROJECT_DIR$/authenticate/views.py" />
+        <option value="$PROJECT_DIR$/prune/views.py" />
       </list>
     </option>
   </component>
@@ -260,7 +260,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43452000" />
+    <option name="totallyTimeSpent" value="43767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -370,8 +370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/prune/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="391">
+          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
