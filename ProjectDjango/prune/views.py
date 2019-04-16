@@ -24,3 +24,4 @@ def magic(request):
     recents = recents.json()
     print(songs)
     print(recents)
+    return render(request, 'prune/magic.html')
