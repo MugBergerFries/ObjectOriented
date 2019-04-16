@@ -80,7 +80,7 @@ def callback(request):
     # url = '{}?{}'.format(base_url, query)
     # return redirect(url)
     # return render(request, 'prune/choose.html/<token>', context)
-    return render(request, 'prune/choose.html/?token={{token}}', context)
+    return render(request, 'prune/choose.html', context)
 
 
 
