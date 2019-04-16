@@ -74,13 +74,14 @@ def callback(request):
 
     context = {
         'playlist_list': name_id,
+        'token': token,
     }
     # base_url = reverse('prune:choose')
     # query = urlencode({'context': context})
     # url = '{}?{}'.format(base_url, query)
     # return redirect(url)
     # return render(request, 'prune/choose.html/<token>', context)
-    return render(request, 'prune/choose.html', context, token)
+    return render(request, 'prune/choose.html', context)
 
 
 
