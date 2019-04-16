@@ -57,11 +57,11 @@ def magic(request):
     #print("ID HERE", test)
     recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', headers=headers)
-    songs = songs.json()
+    songs_resp = songs.json()
     rec_resp = recents.json()
 
-    for song in songs:
-        print("START\n", song[0] )
+    for i in songs_resp:
+        print("START\n", i[0] )
     #print(rec_resp[0]['name'])
     # for song in rec_resp:
     #     print(song)
