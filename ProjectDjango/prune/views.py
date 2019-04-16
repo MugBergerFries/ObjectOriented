@@ -15,7 +15,6 @@ def choose(request):
 
 def magic(request):
     print("TEST123")
-    token = request.session['token']
     headers = {'Authorization': 'Bearer ' + token}
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
