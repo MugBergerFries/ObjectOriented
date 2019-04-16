@@ -63,7 +63,7 @@ def magic(request):
     rec_resp = recents.json()
 
     for i in songs_resp:
-        print("START\n", i[0] )
+        print("START\n", i )
     #print(rec_resp[0]['name'])
     # for song in rec_resp:
     #     print(song)
