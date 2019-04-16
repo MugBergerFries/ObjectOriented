@@ -56,19 +56,13 @@ def magic(request):
     playlist_id = request.GET.get('playlist')
     token = request.GET.get('token')
     headers = {'Authorization': 'Bearer ' + token}
-    #print("ID HERE", test)
-    recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
+    # recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', headers=headers)
     songs_resp = songs.json()
     tracks = songs_resp['items']
-    # rec_resp = recents.json()
+    track_list = []
 
     for p_track in tracks:
-        print("START\n", p_track['track']['name'])
-    #print(rec_resp[0]['name'])
-    # for song in rec_resp:
-    #     print(song)
-
-    #print(songs)
-    #print(song_names)
-    return render(request, 'prune/magic.html')
+        track_list.append(p_track['track']['name'])
+    context = {'track_list': track_list}
+    return render(request, 'prune/magic.html', context)

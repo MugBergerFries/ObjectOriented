@@ -6,5 +6,8 @@
   </head>
   <body>
     <h1>Songs in this playlist</h1>
+      {% for name in track_list %}
+        <button name="name_{{name}}" type="submit" value="1" >{{name}}</button>
+      {% endfor %}
   </body>
 </html>
