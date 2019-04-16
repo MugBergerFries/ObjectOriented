@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 import requests
+import os
 
 
 
@@ -16,7 +17,7 @@ def magic(request):
     print("TEST123")
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
-    print(token)
+    print(os.environ['SPOTIPY_CLIENT_SECRET'])
     test = request.GET.get('playlist')
     #print("ID HERE", test)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+test+'/tracks')
