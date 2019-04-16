@@ -23,7 +23,7 @@ def magic(request):
     # songs = songs.json()
     rec_resp = recents.json()
     for song in rec_resp:
-        print(song['name'])
+        print(song)
 
     print(songs)
     print(song_names)
