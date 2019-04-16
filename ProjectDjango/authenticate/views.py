@@ -31,7 +31,7 @@ def about(request):
 
 def login(request):
     return redirect('https://accounts.spotify.com/authorize?client_id=' + client_id + '&response_type=code'
-                    '&redirect_uri=' + redirect_uri1 + '&scope=user-read-private')
+                    '&redirect_uri=' + redirect_uri1 + '&scope=user-read-private, user-read-recently-played')
 
 
 def callback(request):
