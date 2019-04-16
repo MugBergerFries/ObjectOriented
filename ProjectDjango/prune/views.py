@@ -18,7 +18,10 @@ def magic(request):
     token = request.GET.get('token')
     headers = {'Authorization': 'Bearer ' + token}
     #print("ID HERE", test)
+    recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', headers=headers)
-    resp = songs.json()
-    print(resp)
+    songs = songs.json()
+    recents = recents.json()
+    print(songs)
+    print(recents)
     return render(request, 'prune/magic.html')

@@ -45,7 +45,7 @@ def callback(request):
     payload = {"grant_type": "authorization_code", "code": str(code), "redirect_uri": redirect_uri1}
     headers = {'Authorization': 'Basic ' + encoded}
     req = requests.post(url, data=payload, headers=headers)
-    print(req.text)
+    #print(req.text)
     global token
     response_list = req.json()
     token = response_list['access_token']
