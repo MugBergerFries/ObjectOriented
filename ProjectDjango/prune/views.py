@@ -21,7 +21,8 @@ def magic(request):
     recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', headers=headers)
     songs = songs.json()
-    recents = recents.json()
+    rec_resp = recents.json()
+
     print(songs)
-    print(recents)
+    print(rec_resp['name'])
     return render(request, 'prune/magic.html')
