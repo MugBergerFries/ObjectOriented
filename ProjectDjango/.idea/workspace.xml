@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097f5879-5e41-4187-b563-f7fb9710af1e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/prune/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/prune/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/prune/magic.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prune/magic.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -271,7 +270,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45666000" />
+    <option name="totallyTimeSpent" value="45717000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
