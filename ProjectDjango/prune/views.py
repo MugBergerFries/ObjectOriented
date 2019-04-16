@@ -16,6 +16,7 @@ def magic(request):
     print("TEST123")
     #if request.method == 'POST':
     #print("LOOK HERE", request.POST.get())
+    print(token)
     test = request.GET.get('playlist')
     #print("ID HERE", test)
     songs = requests.get('https://api.spotify.com/v1/playlists/'+test+'/tracks')
