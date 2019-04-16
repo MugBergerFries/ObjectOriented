@@ -26,5 +26,5 @@ def magic(request):
         print(song)
 
     print(songs)
-    print(song_names)
+    #print(song_names)
     return render(request, 'prune/magic.html')
