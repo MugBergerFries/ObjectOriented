@@ -62,7 +62,7 @@ class Playlist:
         average_names = ['key', 'mode', 'acousticness', 'danceability', 'energy', 'instrumentalness',
                          'valence', 'tempo']
         average_values = [0, 0, 0, 0, 0, 0, 0, 0]
-        for song in self.song_dict:
+        for song in self.song_dict.values():
             average_values = map(lambda x, y: x + y, average_values, song.attributes)
         average_values = average_values / len(self.song_dict)
         self.averages = dict(zip(average_names, average_values))
