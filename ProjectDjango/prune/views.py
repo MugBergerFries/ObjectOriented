@@ -41,7 +41,31 @@ class Song:
         vdiff = self.compare_attribute(self.valence, song_2.valence, 0, 1)
         tdiff = self.compare_attribute(self.tempo, song_2.tempo, 55, 200)
         diffs = [kdiff, mdiff, adiff, ddiff, ediff, idiff, vdiff, tdiff]
-        return sum(diffs)/8
+        return sum(diffs) / 8
+
+
+class Playlist:
+
+    def __init__(self, playlist_id, token):
+        headers = {'Authorization': 'Bearer ' + token}
+        # recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
+        songs = requests.get('https://api.spotify.com/v1/playlists/' + playlist_id + '/tracks', headers=headers)
+        songs_resp = songs.json()
+        tracks = songs_resp['items']
+        id_list = []
+        for p_track in tracks:
+            id_list.append(p_track['track']['id'])
+        song_list = []
+        for song_id in id_list:
+            song_list.append(Song(song_id, token))
+        self.song_dict = dict(zip(id_list, song_list))
+        average_names = ['key', 'mode', 'acousticness', 'danceability', 'energy', 'instrumentalness',
+                         'valence', 'tempo']
+        average_values = [0, 0, 0, 0, 0, 0, 0, 0]
+        for song in self.song_dict:
+            average_values = map(lambda x, y: x + y, average_values, song.attributes)
+        average_values = average_values / len(self.song_dict)
+        self.averages = dict(zip(average_names, average_values))
 
 
 def choose(request):
@@ -55,14 +79,7 @@ def choose(request):
 def magic(request):
     playlist_id = request.GET.get('playlist')
     token = request.GET.get('token')
-    headers = {'Authorization': 'Bearer ' + token}
-    # recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
-    songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', headers=headers)
-    songs_resp = songs.json()
-    tracks = songs_resp['items']
-    track_list = []
-
-    for p_track in tracks:
-        track_list.append(p_track['track']['name'])
-    context = {'track_list': track_list}
+    chosen = Playlist(playlist_id, token)
+    print(chosen.averages)
+    context = {'to_prune': to_prune}
     return render(request, 'prune/magic.html', context)
