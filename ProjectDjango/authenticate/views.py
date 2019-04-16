@@ -52,7 +52,7 @@ def callback(request):
     print("TOKEN: " + token)
 
     client_credentials_manager = SpotifyClientCredentials(client_id=client_id,
-                                                          client_secret='e1c15024a0c744a792d729510575a0ca')
+                                                          client_secret=os.environ['SPOTIPY_CLIENT_SECRET'])
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
     # get users information
