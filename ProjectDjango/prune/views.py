@@ -89,7 +89,7 @@ class Playlist:
         current_to_prune = 'undefined'
         lowest_closeness = 11
         for song in self.song_dict.values():
-            print(song.name + ": " + song.closeness(self.averages))
+            print(song.name + ": " + str(song.closeness(self.averages)))
             if song.closeness(self.averages) < lowest_closeness:
                 lowest_closeness = song.closeness(self.averages)
                 current_to_prune = song.song_id
