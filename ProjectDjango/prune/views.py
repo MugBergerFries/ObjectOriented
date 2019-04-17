@@ -9,6 +9,7 @@ class Song:
     def __init__(self, song_id, token):
         headers = {'Authorization': 'Bearer ' + token}
         song_info = requests.get('https://api.spotify.com/v1/audio-features/' + song_id, headers=headers)
+        self.song_id = song_id
         self.token = token
         self.key = song_info.json()['key']
         self.mode = song_info.json()['mode']
@@ -58,6 +59,7 @@ class Song:
 class Playlist:
 
     def __init__(self, playlist_id, token):
+        self.token = token
         headers = {'Authorization': 'Bearer ' + token}
         # recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
         songs = requests.get('https://api.spotify.com/v1/playlists/' + playlist_id + '/tracks', headers=headers)
@@ -78,6 +80,15 @@ class Playlist:
         average_values = list(map(lambda x: x / len(self.song_dict), average_values))
         self.averages = dict(zip(average_names, average_values))
 
+    def find_song_to_prune(self):
+        current_to_prune = 'undefined'
+        lowest_closeness = 11
+        for song in self.song_dict.values():
+            if song.closeness(self.averages) < lowest_closeness:
+                lowest_closeness = song.closeness(self.averages)
+                current_to_prune = song.song_id
+        return current_to_prune, self.song_dict[current_to_prune]
+
 
 def choose(request):
     # context = request.GET.get('context')
@@ -91,6 +102,9 @@ def magic(request):
     playlist_id = request.GET.get('playlist')
     token = request.GET.get('token')
     chosen = Playlist(playlist_id, token)
-    print(chosen.averages)
-    context = {'to_prune': to_prune}
+    to_prune_id, to_prune_name = chosen.find_song_to_prune()
+    if to_prune_id == 'undefined':
+        print("ERROR: SONG CHOSEN TO PRUNE IS UNDEFINED")
+        return render(request, 'prune/error.html')
+    context = {'to_prune_id': to_prune_id, 'to_prune_name': to_prune_name}
     return render(request, 'prune/magic.html', context)
