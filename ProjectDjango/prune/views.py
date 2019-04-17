@@ -81,6 +81,8 @@ class Playlist:
         for song in self.song_dict.values():
             average_values = list(map(lambda x, y: x + y, average_values, song.attributes))
         average_values = list(map(lambda x: x / len(self.song_dict), average_values))
+        for value in average_values:
+            print(value)
         self.averages = dict(zip(average_names, average_values))
 
     def find_song_to_prune(self):
