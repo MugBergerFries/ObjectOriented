@@ -10,6 +10,7 @@ class Song:
         headers = {'Authorization': 'Bearer ' + token}
         song_info = requests.get('https://api.spotify.com/v1/tracks/' + song_id, headers=headers)
         song_attributes = requests.get('https://api.spotify.com/v1/audio-features/' + song_id, headers=headers)
+        print("THIS SONG: " + song_info.json())
         self.name = song_info.json()['name']
         self.song_id = song_id
         self.token = token
