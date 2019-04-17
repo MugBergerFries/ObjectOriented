@@ -8,17 +8,19 @@ import os
 class Song:
     def __init__(self, song_id, token):
         headers = {'Authorization': 'Bearer ' + token}
-        song_info = requests.get('https://api.spotify.com/v1/audio-features/' + song_id, headers=headers)
+        song_info = requests.get('https://api.spotify.com/v1/tracks/' + song_id, headers=headers)
+        song_attributes = requests.get('https://api.spotify.com/v1/audio-features/' + song_id, headers=headers)
+        self.name = song_info.json()['name']
         self.song_id = song_id
         self.token = token
-        self.key = song_info.json()['key']
-        self.mode = song_info.json()['mode']
-        self.acousticness = song_info.json()['acousticness']
-        self.danceability = song_info.json()['danceability']
-        self.energy = song_info.json()['energy']
-        self.instrumentalness = round(song_info.json()['instrumentalness'])
-        self.valence = song_info.json()['valence']
-        self.tempo = song_info.json()['tempo']
+        self.key = song_attributes.json()['key']
+        self.mode = song_attributes.json()['mode']
+        self.acousticness = song_attributes.json()['acousticness']
+        self.danceability = song_attributes.json()['danceability']
+        self.energy = song_attributes.json()['energy']
+        self.instrumentalness = round(song_attributes.json()['instrumentalness'])
+        self.valence = song_attributes.json()['valence']
+        self.tempo = song_attributes.json()['tempo']
         self.attributes = [self.key, self.mode, self.acousticness, self.danceability, self.energy,
                            self.instrumentalness, self.valence, self.tempo]
 
@@ -87,7 +89,7 @@ class Playlist:
             if song.closeness(self.averages) < lowest_closeness:
                 lowest_closeness = song.closeness(self.averages)
                 current_to_prune = song.song_id
-        return current_to_prune, self.song_dict[current_to_prune]
+        return self.song_dict.get(current_to_prune, 'undefined')
 
 
 def choose(request):
@@ -102,9 +104,9 @@ def magic(request):
     playlist_id = request.GET.get('playlist')
     token = request.GET.get('token')
     chosen = Playlist(playlist_id, token)
-    to_prune_id, to_prune_name = chosen.find_song_to_prune()
-    if to_prune_id == 'undefined':
+    to_prune = chosen.find_song_to_prune()
+    if to_prune == 'undefined':
         print("ERROR: SONG CHOSEN TO PRUNE IS UNDEFINED")
         return render(request, 'prune/error.html')
-    context = {'to_prune_id': to_prune_id, 'to_prune_name': to_prune_name}
+    context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name}
     return render(request, 'prune/magic.html', context)
