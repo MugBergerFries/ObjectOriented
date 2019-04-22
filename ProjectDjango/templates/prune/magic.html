@@ -8,6 +8,6 @@
     <h1>The chosen song to prune is:</h1>
     <h2>{{to_prune_name}}</h2>
     <iframe src="https://open.spotify.com/embed/track/{{to_prune_id}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    <input type="Delete" onclick="return confirm('Are you sure you want to remove this song from your playlist?')" />
+    <button name="remove" onclick="return confirm('Are you sure you want to remove this song from your playlist?')"> Remove Song </button>
   </body>
 </html>
