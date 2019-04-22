@@ -67,6 +67,7 @@ class Playlist:
         # recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
         songs = requests.get('https://api.spotify.com/v1/playlists/' + playlist_id + '/tracks', headers=headers)
         songs_resp = songs.json()
+        print('SONGS_RESP: ' + songs.text)
         tracks = songs_resp['items']
         id_list = []
         for p_track in tracks:
