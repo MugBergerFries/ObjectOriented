@@ -6,12 +6,13 @@ import os
 
 
 class Song:
-    def __init__(self, song_id, token):
+    def __init__(self, song_id, token, position):
         headers = {'Authorization': 'Bearer ' + token}
         song_info = requests.get('https://api.spotify.com/v1/tracks/' + song_id, headers=headers)
         song_attributes = requests.get('https://api.spotify.com/v1/audio-features/' + song_id, headers=headers)
         print("THIS SONG: " + song_attributes.text)
         self.name = song_info.json()['name']
+        self.position = position
         self.song_id = song_id
         self.token = token
         self.key = song_attributes.json()['key']
@@ -46,7 +47,7 @@ class Song:
             tdiff = self.compare_attribute(self.tempo, invar['tempo'], 55, 200)
             diffs = [kdiff, mdiff, adiff, ddiff, ediff, idiff, vdiff, tdiff]
         else:
-            song_2 = Song(invar, self.token)
+            song_2 = Song(invar, self.token, -1)
             kdiff = self.compare_attribute(self.key, song_2.key, 0, 11)
             mdiff = self.compare_attribute(self.mode, song_2.mode, 0, 1)
             adiff = self.compare_attribute(self.acousticness, song_2.acousticness, 0, 1)
@@ -73,8 +74,8 @@ class Playlist:
         for p_track in tracks:
             id_list.append(p_track['track']['id'])
         song_list = []
-        for song_id in id_list:
-            song_list.append(Song(song_id, token))
+        for idx, song_id in enumerate(id_list):
+            song_list.append(Song(song_id, token, idx))
         self.song_dict = dict(zip(id_list, song_list))
         average_names = ['key', 'mode', 'acousticness', 'danceability', 'energy', 'instrumentalness',
                          'valence', 'tempo']
@@ -110,5 +111,5 @@ def magic(request):
     if to_prune == 'undefined':
         print("ERROR: SONG CHOSEN TO PRUNE IS UNDEFINED")
         return render(request, 'prune/error.html')
-    context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name}
+    context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position}
     return render(request, 'prune/magic.html', context)
