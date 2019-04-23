@@ -117,13 +117,13 @@ def magic(request):
 def remove(request):
     song_id = request.GET.get('song_id')
     order = request.GET.get('order')
-    token = request.GET.get('token')
+    token = request.GET.get('to_prune_token')
     playlist_id = request.GET.get('playlist')
 
     headers = {'Authorization': 'Bearer ' + token}
     tracks = {"tracks":[{"uri": "spotify:track:"+song_id, "positions":[order]}]}
     tracks = str(tracks)
-    # data = '{"tracks":[{"uri":"spotify:track:3DNRdudZ2SstnDCVKFdXxG","positions":[0]}]}'
+    data = '{"tracks":[{"uri":"spotify:track:3DNRdudZ2SstnDCVKFdXxG","positions":[0]}]}'
     songs = requests.delete('https://api.spotify.com/v1/playlists/'+str(playlist_id)+'/tracks',  headers=headers, data=data)
     print("RESPONSE", songs)
 
