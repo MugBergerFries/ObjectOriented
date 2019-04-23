@@ -124,8 +124,10 @@ def remove(request):
     tracks = {"tracks":[{"uri": "spotify:track:"+song_id, "positions":[order]}]}
     tracks = str(tracks)
     data = '{"tracks":[{"uri":"spotify:track:3DNRdudZ2SstnDCVKFdXxG","positions":[0]}]}'
-    songs = requests.delete('https://api.spotify.com/v1/playlists/'+str(playlist_id)+'/tracks',  headers=headers, data=data)
-    print("RESPONSE", songs)
+    #songs = requests.delete('https://api.spotify.com/v1/playlists/'+str(playlist_id)+'/tracks',  headers=headers, data=data)
+    response = requests.delete('https://api.spotify.com/v1/playlists/26S6d4nIGuMeKkRhJ2tuAI/tracks', headers=headers, data=data)
+
+    print("RESPONSE", response)
 
     context = {'remove_song_id':song_id, 'remove_order':order, 'remove_token': token}
     return render(request, 'prune/remove.html', context)
