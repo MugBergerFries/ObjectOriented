@@ -118,5 +118,6 @@ def magic(request):
 def remove(request):
     song_id = request.GET.get('song_id')
     order = request.GET.get('order')
-    context = {'remove_song_id':song_id, 'remove_order':order}
+    token = request.GET.get('token')
+    context = {'remove_song_id':song_id, 'remove_order':order, 'remove_token': token}
     return render(request, 'prune/remove.html', context)
