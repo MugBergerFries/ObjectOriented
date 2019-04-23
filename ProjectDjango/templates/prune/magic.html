@@ -10,7 +10,7 @@
     <iframe src="https://open.spotify.com/embed/track/{{to_prune_id}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     <br>
     <!-- <button name="remove" onclick="return confirm('Are you sure you want to remove this song from your playlist?')", "/callback"> Remove Song </button> -->
-    <button name="remove" type="submit" value="1" onclick="window.location.href = '/prune/remove&order={{to_prune_pos}}&song_id={{to_prune_id}}';">{{name}}</button>
+    <button name="remove" type="submit" value="1" onclick="window.location.href = '/prune/remove?order={{to_prune_pos}}&song_id={{to_prune_id}}';">Remove</button>
     <!-- <button name = "remove" type="submit" value="1" onclick="window.location.href =/authenticate/callback"> Don't remove Song </button> -->
   </body>
 </html>
