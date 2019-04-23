@@ -111,13 +111,18 @@ def magic(request):
     if to_prune == 'undefined':
         print("ERROR: SONG CHOSEN TO PRUNE IS UNDEFINED")
         return render(request, 'prune/error.html')
-    context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position, 'to_prune_token': to_prune.token}
+    context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position, 'to_prune_token': to_prune.token, 'to_prune_playlist':playlist_id}
     return render(request, 'prune/magic.html', context)
 
 def remove(request):
     song_id = request.GET.get('song_id')
     order = request.GET.get('order')
     token = request.GET.get('token')
-    print("HERE", token)
+    playlist_id = request.GET.get('playlist')
+
+    headers = {'Authorization': 'Bearer ' + token}
+    tracks = {"tracks":[{"uri": "spotify:track:"+song_id, "positions":[order]}]}
+    songs = requests.get('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', headers=headers, tracks=tracks)
+
     context = {'remove_song_id':song_id, 'remove_order':order, 'remove_token': token}
     return render(request, 'prune/remove.html', context)
