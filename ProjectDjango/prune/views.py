@@ -122,7 +122,8 @@ def remove(request):
 
     headers = {'Authorization': 'Bearer ' + token}
     tracks = {"tracks":[{"uri": "spotify:track:"+song_id, "positions":[order]}]}
-    songs = requests.delete('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks', data=tracks, headers=headers, )
+    tracks = str(tracks)
+    songs = requests.delete('https://api.spotify.com/v1/playlists/'+playlist_id+'/tracks',  headers=headers, data=tracks,)
     print("RESPONSE", songs)
 
     context = {'remove_song_id':song_id, 'remove_order':order, 'remove_token': token}
