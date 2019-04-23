@@ -117,7 +117,7 @@ def magic(request):
 def remove(request):
     song_id = request.GET.get('song_id')
     order = request.GET.get('order')
-    token = request.GET.get('to_prune_token')
+    token = request.GET.get('token')
     playlist_id = request.GET.get('playlist')
 
     headers = {'Authorization': 'Bearer ' + token}
