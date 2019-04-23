@@ -112,6 +112,7 @@ def magic(request):
         print("ERROR: SONG CHOSEN TO PRUNE IS UNDEFINED")
         return render(request, 'prune/error.html')
     context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position}
+    print("HERE", to_prune.position)
     return render(request, 'prune/magic.html', context)
 
 def remove(request):
