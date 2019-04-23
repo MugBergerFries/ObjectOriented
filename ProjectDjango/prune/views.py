@@ -115,4 +115,7 @@ def magic(request):
     return render(request, 'prune/magic.html', context)
 
 def remove(request):
-    return render(request, 'prune/remove.html')
+    song_id = request.GET.get('song_id')
+    order = request.GET.get('order')
+    context = {'remove_song_id':song_id, 'remove_order':order}
+    return render(request, 'prune/remove.html', context)
