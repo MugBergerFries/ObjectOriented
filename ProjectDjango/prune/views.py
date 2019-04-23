@@ -120,12 +120,22 @@ def remove(request):
     token = request.GET.get('token')
     playlist_id = request.GET.get('playlist')
 
-    headers = {'Authorization': 'Bearer ' + token}
-    tracks = {"tracks":[{"uri": "spotify:track:"+song_id, "positions":[order]}]}
-    tracks = str(tracks)
+    # headers = {'Authorization': 'Bearer ' + token}
+    # tracks = {"tracks":[{"uri": "spotify:track:"+song_id, "positions":[order]}]}
+    # tracks = str(tracks)
+    # data = '{"tracks":[{"uri":"spotify:track:3DNRdudZ2SstnDCVKFdXxG","positions":[0]}]}'
+    # #songs = requests.delete('https://api.spotify.com/v1/playlists/'+str(playlist_id)+'/tracks',  headers=headers, data=data)
+    # response = requests.delete('https://api.spotify.com/v1/playlists/26S6d4nIGuMeKkRhJ2tuAI/tracks', headers=headers, data=data)
+    headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer BQB0DmWjcg1cuBbxS-b14SgB4VPobjNXO4Qa7ttNqrRbCQxKXOcdJ91tgBTQTMAJDpwaPcqHGR-hrOoElfAPYjGWTj14JBB67S1_71JWDwI_TkMw2yWKEE1Dh6Ei5opvMlnipC4dqTM2KVjmoM-Kt5JjpAljxbZu2jK1E4Q-5YzhYAl5yxi-ktT48CzEC7Sz1mL-EonUnauSs18iGMngoUObXw{',
+}
+
     data = '{"tracks":[{"uri":"spotify:track:3DNRdudZ2SstnDCVKFdXxG","positions":[0]}]}'
-    #songs = requests.delete('https://api.spotify.com/v1/playlists/'+str(playlist_id)+'/tracks',  headers=headers, data=data)
+
     response = requests.delete('https://api.spotify.com/v1/playlists/26S6d4nIGuMeKkRhJ2tuAI/tracks', headers=headers, data=data)
+
 
     print("RESPONSE", response)
 
