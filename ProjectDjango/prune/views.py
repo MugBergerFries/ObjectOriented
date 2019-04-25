@@ -99,7 +99,7 @@ def choose(request):
 
 
 def magic(request):
-    playlist_id = request.session.get('playlist_list')  # request.GET.get('playlist')
+    playlist_id = request.GET.get('playlist')
     token = request.session.get('token')  # request.GET.get('token')
     #Retrieve playlist id of playlist that has been chosen to be pruned (given to us from choose.html)
     chosen = Playlist(playlist_id, token)

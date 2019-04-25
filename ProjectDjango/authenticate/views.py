@@ -73,7 +73,6 @@ def callback(request):
         'playlist_list': name_id,
         'token': token,
     }
-    request.session['playlist_list'] = name_id
     request.session['token'] = token
     return render(request, 'prune/choose.html', context)
 
