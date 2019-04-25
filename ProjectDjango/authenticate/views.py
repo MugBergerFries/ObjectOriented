@@ -10,8 +10,8 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
-redirect_uri1 = 'www.tidytunes.org/callback/'
-redirect_uri2 = 'www.tidytunes.org/about'
+redirect_uri1 = 'http://tidytunes.org/callback/'
+redirect_uri2 = 'http://tidytunes.org/about'
 token = 'NULL'
 
 ### First function to be run, simply returns our home page, index.html ###
