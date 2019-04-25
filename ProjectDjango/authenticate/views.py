@@ -10,8 +10,8 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 client_id = '0ffe4f5e083f464f8ad6061cd80785ca'
-redirect_uri1 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/callback/'
-redirect_uri2 = 'http://ec2-18-191-18-199.us-east-2.compute.amazonaws.com/about'
+redirect_uri1 = 'http://ec2-3-18-166-216.us-east-2.compute.amazonaws.com/callback/'
+redirect_uri2 = 'http://ec2-3-18-166-216.us-east-2.compute.amazonaws.com/about'
 token = 'NULL'
 
 ### First function to be run, simply returns our home page, index.html ###
@@ -68,7 +68,7 @@ def callback(request):
             playlists = sp.next(playlists)
         else:
             playlists = None
-#This is what we want to pass to the choose.html page. It will have access to our playlist/id dict and the token the user obtained 
+#This is what we want to pass to the choose.html page. It will have access to our playlist/id dict and the token the user obtained
     context = {
         'playlist_list': name_id,
         'token': token,
