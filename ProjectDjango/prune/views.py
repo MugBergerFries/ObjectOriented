@@ -65,10 +65,9 @@ class Playlist:
     def __init__(self, playlist_id, token):
         self.token = token
         headers = {'Authorization': 'Bearer ' + token}
-        # recents = requests.get('https://api.spotify.com/v1/me/player/recently-played', headers=headers)
         songs = requests.get('https://api.spotify.com/v1/playlists/' + playlist_id + '/tracks', headers=headers)
         songs_resp = songs.json()
-        print('SONGS_RESP: ' + songs.text)
+        #print('SONGS_RESP: ' + songs.text)
         tracks = songs_resp['items']
         id_list = []
         for p_track in tracks:
@@ -100,6 +99,7 @@ def choose(request):
 
 
 def magic(request):
+    #Retrieve playlist id of playlist that has been chosen to be pruned (given to us from choose.html)
     playlist_id = request.GET.get('playlist')
     token = request.GET.get('token')
     chosen = Playlist(playlist_id, token)
@@ -107,22 +107,23 @@ def magic(request):
     if to_prune == 'undefined':
         print("ERROR: SONG CHOSEN TO PRUNE IS UNDEFINED")
         return render(request, 'prune/error.html')
+    #once song is chosen to prune, pass its id, name, position in the playlist, and it's playlist id to magic.html
     context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position, 'to_prune_token': to_prune.token, 'to_prune_playlist':playlist_id}
     return render(request, 'prune/magic.html', context)
 
 def remove(request):
+    #retrieve song id, position, and playlist id of song to be removed
     song_id = request.GET.get('song_id')
     order = int(request.GET.get('order'))
     token = request.GET.get('token')
     playlist_id = request.GET.get('playlist')
 
     headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/json','Content-Type': 'application/json'}
+    #This the format the Spotify API expects for data on what song to delete
     data = '{"tracks":[{"uri":"spotify:track:'+song_id +'","positions":['+str(order)+']}]}'
+    #call spotify api to delete song from a playlist
     response = requests.delete('https://api.spotify.com/v1/playlists/26S6d4nIGuMeKkRhJ2tuAI/tracks', headers=headers, data=data)
-
-
-    print("RESPONSE", response)
-    print("DATA", data)
-
+    # print("RESPONSE", response)
+    # print("DATA", data)
     context = {'remove_song_id':song_id, 'remove_order':order, 'remove_token': token}
     return render(request, 'prune/remove.html', context)
