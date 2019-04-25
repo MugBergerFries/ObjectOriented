@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>Choose your Playlist</h1>
-    {% for name, id in playlist_list.items %}
-      <button name="id_{{id}}" type="submit" value="1" onclick="window.location.href = '/prune/magic?playlist={{id}}';">{{name}}</button>
-    {% endfor %}
-  </body>
-</html>
+{% extends "authenticate/base.html" %}
+{% block content %}
+
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title></title>
+    </head>
+    <body>
+      <h1>Choose your Playlist</h1>
+      {% for name, id in playlist_list.items %}
+        <button name="id_{{id}}" type="submit" value="1" onclick="window.location.href = '/prune/magic?playlist={{id}}';">{{name}}</button>
+      {% endfor %}
+    </body>
+  </html>
+{% endblock content %}
