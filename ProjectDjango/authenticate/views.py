@@ -77,6 +77,8 @@ def callback(request):
         'playlist_list': name_id,
         'token': token,
     }
+    request.session['playlist_list'] = name_id
+    request.session['token'] = token
     # base_url = reverse('prune:choose')
     # query = urlencode({'context': context})
     # url = '{}?{}'.format(base_url, query)

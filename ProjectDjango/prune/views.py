@@ -100,8 +100,8 @@ def choose(request):
 
 
 def magic(request):
-    playlist_id = request.GET.get('playlist')
-    token = request.GET.get('token')
+    playlist_id = request.session['playlist_list']  # request.GET.get('playlist')
+    token = request.session['token']  # request.GET.get('token')
     chosen = Playlist(playlist_id, token)
     to_prune = chosen.find_song_to_prune()
     if to_prune == 'undefined':
@@ -109,6 +109,7 @@ def magic(request):
         return render(request, 'prune/error.html')
     context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position, 'to_prune_token': to_prune.token, 'to_prune_playlist':playlist_id}
     return render(request, 'prune/magic.html', context)
+
 
 def remove(request):
     song_id = request.GET.get('song_id')
@@ -119,7 +120,6 @@ def remove(request):
     headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/json','Content-Type': 'application/json'}
     data = '{"tracks":[{"uri":"spotify:track:'+song_id +'","positions":['+str(order)+']}]}'
     response = requests.delete('https://api.spotify.com/v1/playlists/26S6d4nIGuMeKkRhJ2tuAI/tracks', headers=headers, data=data)
-
 
     print("RESPONSE", response)
     print("DATA", data)
