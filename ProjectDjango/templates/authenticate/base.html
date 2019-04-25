@@ -21,7 +21,7 @@
         font-family: verdana;
         font-size: 20px;
       }
-      div.title * {
+      div.Title * {
         font-size: 200px;
       }
 
@@ -30,13 +30,10 @@
     </style>
   </head>
   <body>
-    <div style="background-color:#1DB954">
+    <div class="Title" style="background-color:#1DB954">
       <img src="data:image/png;base64,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" alt="Spotify Logo" width="200"
 
-      <div class="title">
-        <strong>TidyTunes</strong>
-      </div>
-
+      <strong>TidyTunes</strong>
     </div>
     {% block content %}{% endblock %}
 
