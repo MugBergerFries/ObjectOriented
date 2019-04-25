@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="097f5879-5e41-4187-b563-f7fb9710af1e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/authenticate/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authenticate/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prune/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/prune/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prune/choose.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prune/choose.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authenticate/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+            <state relative-caret-position="739">
+              <caret line="78" column="27" lean-forward="true" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prune/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
+            <state relative-caret-position="76">
+              <caret line="84" column="20" lean-forward="true" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -87,7 +87,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/prune/choose.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -129,11 +129,11 @@
         <option value="$PROJECT_DIR$/prune/urls.py" />
         <option value="$PROJECT_DIR$/ProjectDjango/urls.py" />
         <option value="$PROJECT_DIR$/ProjectDjango/settings.py" />
-        <option value="$PROJECT_DIR$/templates/prune/choose.html" />
         <option value="$PROJECT_DIR$/templates/prune/magic.html" />
         <option value="$PROJECT_DIR$/templates/prune/error.html" />
-        <option value="$PROJECT_DIR$/authenticate/views.py" />
         <option value="$PROJECT_DIR$/prune/views.py" />
+        <option value="$PROJECT_DIR$/authenticate/views.py" />
+        <option value="$PROJECT_DIR$/templates/prune/choose.html" />
       </list>
     </option>
   </component>
@@ -267,12 +267,12 @@
       <workItem from="1555349078546" duration="1100000" />
       <workItem from="1555953663067" duration="732000" />
       <workItem from="1555977182505" duration="550000" />
-      <workItem from="1556167867792" duration="2814000" />
+      <workItem from="1556167867792" duration="2896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56014000" />
+    <option name="totallyTimeSpent" value="56096000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -390,13 +390,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/prune/choose.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjectDjango/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -404,23 +397,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/authenticate/views.py">
+    <entry file="file://$PROJECT_DIR$/prune/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        <state relative-caret-position="76">
+          <caret line="84" column="20" lean-forward="true" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prune/views.py">
+    <entry file="file://$PROJECT_DIR$/authenticate/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
+        <state relative-caret-position="739">
+          <caret line="78" column="27" lean-forward="true" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/prune/choose.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>

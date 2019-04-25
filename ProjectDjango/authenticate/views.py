@@ -70,8 +70,7 @@ def callback(request):
             playlists = None
 #This is what we want to pass to the choose.html page. It will have access to our playlist/id dict and the token the user obtained
     context = {
-        'playlist_list': name_id,
-        'token': token,
+        'playlist_list': name_id
     }
     request.session['token'] = token
     return render(request, 'prune/choose.html', context)
