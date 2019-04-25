@@ -101,6 +101,8 @@ def choose(request):
 def magic(request):
     playlist_id = request.session['playlist_list']  # request.GET.get('playlist')
     token = request.session['token']  # request.GET.get('token')
+    print("1: " + playlist_id)
+    print("2: " + token)
     #Retrieve playlist id of playlist that has been chosen to be pruned (given to us from choose.html)
     chosen = Playlist(playlist_id, token)
     to_prune = chosen.find_song_to_prune()
