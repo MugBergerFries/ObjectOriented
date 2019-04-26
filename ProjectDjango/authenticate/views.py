@@ -67,7 +67,7 @@ def callback(request):
     }
     request.session['playlist_dict'] = playlist_dict
     request.session['token'] = token  # Save the token to the django session, can be retrieved later using get()
-    return redirect('/choose')  # render(request, 'prune/choose.html', context)
+    return redirect('/prune')  # render(request, 'prune/choose.html', context)
 
 
 # TODO: This function will get a refresh token to allow the user to close the tab and resume later
