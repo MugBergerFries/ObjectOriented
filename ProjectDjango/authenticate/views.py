@@ -53,20 +53,21 @@ def callback(request):
     resp = user.json()  # Convert to json format
     username = resp['id']
     playlists = sp.user_playlists(username)   # Use the username to get their playlists
-    name_id = {}  # Then create a dict that has playlist name as key, playlist key as value
+    playlist_dict = {}  # Then create a dict that has playlist name as key, playlist key as value
     while playlists:
         for playlist in playlists['items']:
-            name_id[playlist['name']] = playlist['id']
+            playlist_dict[playlist['name']] = playlist['id']
         if playlists['next']:
             playlists = sp.next(playlists)
         else:
             playlists = None
     # What we pass to the choose.html page. It will have access to our playlist/id dict and the token the user obtained
     context = {
-        'playlist_list': name_id
+        'playlist_dict': playlist_dict
     }
+    request.session['playlist_dict'] = playlist_dict
     request.session['token'] = token  # Save the token to the django session, can be retrieved later using get()
-    return render(request, 'prune/choose.html', context)
+    return redirect('/choose')  # render(request, 'prune/choose.html', context)
 
 
 # TODO: This function will get a refresh token to allow the user to close the tab and resume later
