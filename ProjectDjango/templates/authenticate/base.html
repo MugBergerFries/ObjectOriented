@@ -32,35 +32,36 @@
       .pruned_song {
         color: white;
       }
-
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      li a:hover {
+        background-color: #111;
+      }
 
 
     </style>
   </head>
   <body>
     <div class="Title" style="background-color:#1DB954">
-      <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://static.echonest.com/BoilTheFrog/index.html">
-              <span class="navbar-logo">Spotify</span>
-              <span class="navbar-title">Boil the Frog</span>
-            </a>
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a class="option option-active" id="show-search">Home</a></li>
-              <li><a class="option" id="show-about">About</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
+      <ul>
+        <li><a href="http://www.tidytunes.org">Home</a></li>
+        <li><a href="http://www.tidytunes.org/about">About</a></li>
+      </ul>
     </div>
     <div class="body">
       {% block content %}{% endblock %}
