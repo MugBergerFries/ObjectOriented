@@ -108,7 +108,7 @@ def magic(request):
     if request.GET.get('playlist'):
         playlist_id = request.GET.get('playlist')  # Retrieve chosen playlist ID (given to us from choose.html)
         request.session['playlist_id'] = playlist_id
-        return redirect('/magic')
+        return redirect('/prune/magic')
     playlist_id = request.session.get('playlist_id')
     token = request.session.get('token')  # Retrieve user's token from session
     chosen = Playlist(playlist_id, token)  # Make a Playlist object for the chosen playlist
