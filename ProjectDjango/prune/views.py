@@ -105,11 +105,13 @@ def choose(request):
 
 # The page where the chosen playlist is examined to find the song to be removed
 def magic(request):
-    if request.GET.get('playlist'):
+    if request.GET.get('playlist'):  # This if is to cleanse the url and hide variables passed in http. On first
+        # visit, magic strips the variables from the http request and saves them to session. It sends them back
+        # without the http variables, skipping the if
         playlist_id = request.GET.get('playlist')  # Retrieve chosen playlist ID (given to us from choose.html)
-        request.session['playlist_id'] = playlist_id
+        request.session['playlist_id'] = playlist_id  # Save chosen playlist to session
         return redirect('/prune/magic')
-    playlist_id = request.session.get('playlist_id')
+    playlist_id = request.session.get('playlist_id')  # Retrieve chosen playlist from session
     token = request.session.get('token')  # Retrieve user's token from session
     chosen = Playlist(playlist_id, token)  # Make a Playlist object for the chosen playlist
     to_prune = chosen.find_song_to_prune()  # Find the song to remove
@@ -122,9 +124,10 @@ def magic(request):
     return render(request, 'prune/magic.html', context)
 
 
+# The page where the user is asked whether or not to remove the chosen song, and given a song preview
 def remove(request):
-    # Retrieve song id, position, and playlist id of song to be remove
-    if request.GET.get('song_id'):
+    # Retrieve song id, position, token, and playlist id of song to be remove, save to the session, send the user back
+    if request.GET.get('song_id'):  # Another if to cleanse the url from revealing variables.
         song_id = request.GET.get('song_id')
         request.session['song_id'] = song_id
         order = int(request.GET.get('order'))
@@ -134,11 +137,12 @@ def remove(request):
         playlist_id = request.GET.get('playlist')
         request.session['remove_playlist_id'] = playlist_id
         return redirect('/prune/remove')
+    # Get the song id, position, token, and playlist id from the session
     song_id = request.session.get('song_id')
     order = request.session.get('order')
     token = request.session.get('remove_token')
     playlist_id = request.session.get('remove_playlist_id')
-    headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/json','Content-Type': 'application/json'}
+    headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
     # This the format the Spotify API expects for data on what song to delete
     data = '{"tracks":[{"uri":"spotify:track:' + song_id + '","positions":[' + str(order) + ']}]}'
     # Call Spotify api to delete song from a playlist
