@@ -95,9 +95,12 @@ class Playlist:
 
 #
 def choose(request):
+    playlist_dict = request.session.get('playlist_dict')
     context = {
-        'playlist_dict': request.session.get('playlist_dict')
+        'playlist_dict': playlist_dict
     }
+    for i in playlist_dict:
+        print(playlist_dict[i])
     return render(request, 'prune/choose.html', context)
 
 
@@ -123,9 +126,9 @@ def remove(request):
     playlist_id = request.GET.get('playlist')
 
     headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/json','Content-Type': 'application/json'}
-    #This the format the Spotify API expects for data on what song to delete
+    # This the format the Spotify API expects for data on what song to delete
     data = '{"tracks":[{"uri":"spotify:track:'+song_id +'","positions":['+str(order)+']}]}'
-    #call spotify api to delete song from a playlist
+    # call spotify api to delete song from a playlist
     response = requests.delete('https://api.spotify.com/v1/playlists/26S6d4nIGuMeKkRhJ2tuAI/tracks', headers=headers, data=data)
     context = {'remove_song_id':song_id, 'remove_order':order, 'remove_token': token}
     return render(request, 'prune/remove.html', context)

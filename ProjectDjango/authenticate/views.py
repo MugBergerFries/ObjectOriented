@@ -66,6 +66,8 @@ def callback(request):
         'playlist_dict': playlist_dict
     }
     request.session['playlist_dict'] = playlist_dict
+    for i in playlist_dict:
+        print(playlist_dict[i])
     request.session['token'] = token  # Save the token to the django session, can be retrieved later using get()
     return redirect('/prune')  # render(request, 'prune/choose.html', context)
 
