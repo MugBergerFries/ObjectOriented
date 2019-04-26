@@ -39,6 +39,27 @@
       .pruned_song {
         color: white;
       }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000;
+      }
+      li {
+        float: right;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      li a:hover {
+        color: #1DB954;
+        text-decoration: none;
+      }
 
 
 
@@ -49,6 +70,10 @@
       <!--<img src="https://developer.spotify.com/assets/branding-guidelines/icon2@2x.png" alt="Spotify Logo" width="40">-->
       <img src="https://developer.spotify.com/assets/branding-guidelines/icon3@2x.png" alt="Spotify Logo" width="80">
       <strong>TidyTunes</strong>
+      <ul>
+        <li><a href="http://www.tidytunes.org">Home</a></li>
+        <li><a href="http://www.tidytunes.org/about">About</a></li>
+      </ul>
     </div>
     <div class="body">
       {% block content %}{% endblock %}
