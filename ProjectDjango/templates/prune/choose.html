@@ -10,7 +10,7 @@
     <body>
       <div id="playlists" style="text-align: center;">
         <h1>Choose your Playlist</h1>
-        {% for name, id in playlist_list.items %}
+        {% for name, id in playlist_dict.items %}
           <button name="id_{{id}}" type="submit" value="1" onclick="window.location.href = '/prune/magic?playlist={{id}}';">{{name}}</button>
         {% endfor %}
       </div>

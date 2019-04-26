@@ -61,14 +61,8 @@ def callback(request):
             playlists = sp.next(playlists)
         else:
             playlists = None
-    # What we pass to the choose.html page. It will have access to our playlist/id dict and the token the user obtained
-    context = {
-        'playlist_dict': playlist_dict
-    }
     request.session['playlist_dict'] = playlist_dict
-    for i in playlist_dict:
-        print(playlist_dict[i])
-    request.session['token'] = token  # Save the token to the django session, can be retrieved later using get()
+    request.session['token'] = token  # Save token and dict to the django session, can be retrieved later using get()
     return redirect('/prune')  # render(request, 'prune/choose.html', context)
 
 

@@ -99,8 +99,6 @@ def choose(request):
     context = {
         'playlist_dict': playlist_dict
     }
-    for i in playlist_dict:
-        print(playlist_dict[i])
     return render(request, 'prune/choose.html', context)
 
 
