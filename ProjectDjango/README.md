@@ -17,3 +17,7 @@ TidyTunes is an application that allows Spotify users to clean up their playlist
 - templates: Where all of our html templates are stored for our site 
 - variousFiles: Where we store all of our non-code deliverables for this project (i.e class diagrams, reports, etc.) 
 -runserver: The command to run our server (however, our server should be constantly running at this point). 
+
+## How to execute our application:
+
+No installation is needed to utilize our application. Simply navigate to www.tidytunes.com
