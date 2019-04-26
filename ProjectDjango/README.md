@@ -20,4 +20,4 @@ TidyTunes is an application that allows Spotify users to clean up their playlist
 
 ## How to execute our application:
 
-No installation is needed to utilize our application. Simply navigate to www.tidytunes.com
+No installation is needed to utilize our application. Simply navigate to www.tidytunes.org
