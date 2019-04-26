@@ -93,26 +93,27 @@ class Playlist:
         return self.song_dict.get(current_to_prune, 'undefined')
 
 
-#
+# Next page, has the user choose their playlist to change at choose.html
 def choose(request):
-    playlist_dict = request.session.get('playlist_dict')
-    context = {
+    playlist_dict = request.session.get('playlist_dict')  # Get the playlists from the session
+    context = {  # This will be passed to choose.html
         'playlist_dict': playlist_dict
     }
     return render(request, 'prune/choose.html', context)
 
 
+# The page where the chosen playlist is examined to find the song to be removed
 def magic(request):
-    playlist_id = request.GET.get('playlist')
-    token = request.session.get('token')
-    # Retrieve playlist id of playlist that has been chosen to be pruned (given to us from choose.html)
-    chosen = Playlist(playlist_id, token)
-    to_prune = chosen.find_song_to_prune()
+    playlist_id = request.GET.get('playlist')  # Retrieve chosen playlist ID (given to us from choose.html)
+    token = request.session.get('token')  # Retrieve user's token from session
+    chosen = Playlist(playlist_id, token)  # Make a Playlist object for the chosen playlist
+    to_prune = chosen.find_song_to_prune()  # Find the song to remove
     if to_prune == 'undefined':
         print("ERROR: SONG CHOSEN TO PRUNE IS UNDEFINED")
         return render(request, 'prune/error.html')
     # Once song is chosen to prune, pass its id, name, position in the playlist, and it's playlist id to magic.html
-    context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position, 'to_prune_token': to_prune.token, 'to_prune_playlist':playlist_id}
+    context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position,
+               'to_prune_token': to_prune.token, 'to_prune_playlist': playlist_id}
     return render(request, 'prune/magic.html', context)
 
 
@@ -122,11 +123,10 @@ def remove(request):
     order = int(request.GET.get('order'))
     token = request.GET.get('token')
     playlist_id = request.GET.get('playlist')
-
     headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/json','Content-Type': 'application/json'}
     # This the format the Spotify API expects for data on what song to delete
-    data = '{"tracks":[{"uri":"spotify:track:'+song_id +'","positions":['+str(order)+']}]}'
-    # call spotify api to delete song from a playlist
-    response = requests.delete('https://api.spotify.com/v1/playlists/26S6d4nIGuMeKkRhJ2tuAI/tracks', headers=headers, data=data)
-    context = {'remove_song_id':song_id, 'remove_order':order, 'remove_token': token}
+    data = '{"tracks":[{"uri":"spotify:track:' + song_id + '","positions":[' + str(order) + ']}]}'
+    # Call Spotify api to delete song from a playlist
+    requests.delete('https://api.spotify.com/v1/playlists/' + playlist_id + '/tracks', headers=headers, data=data)
+    context = {'remove_song_id': song_id, 'remove_order': order, 'remove_token': token}
     return render(request, 'prune/remove.html', context)
