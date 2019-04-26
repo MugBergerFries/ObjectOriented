@@ -16,7 +16,7 @@ token = 'NULL'
 
 ### First function to be run, simply returns our home page, index.html ###
 def home(request):
-    HttpResponse('https://api.spotify.com/v1/artists/{3TVXtAsR1Inumwj472S9r4}')
+    # HttpResponse('https://api.spotify.com/v1/artists/{3TVXtAsR1Inumwj472S9r4}')
     return render(request, 'authenticate/index.html')
 
 ### return our page displaying users playlists ###
