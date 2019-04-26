@@ -86,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/authenticate/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="682">
+              <caret line="46" column="116" selection-start-line="46" selection-start-column="116" selection-end-line="46" selection-end-column="116" />
             </state>
           </provider>
         </entry>
@@ -300,7 +300,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69886000" />
+    <option name="totallyTimeSpent" value="69959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1172" height="1047" extended-state="0" />
@@ -464,8 +464,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/authenticate/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="682">
+          <caret line="46" column="116" selection-start-line="46" selection-start-column="116" selection-end-line="46" selection-end-column="116" />
         </state>
       </provider>
     </entry>
