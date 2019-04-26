@@ -120,7 +120,8 @@ def magic(request):
         return render(request, 'prune/error.html')
     # Once song is chosen to prune, pass its id, name, position in the playlist, and it's playlist id to magic.html
     context = {'to_prune_id': to_prune.song_id, 'to_prune_name': to_prune.name, 'to_prune_pos': to_prune.position,
-               'to_prune_token': to_prune.token, 'to_prune_playlist': playlist_id}
+               'to_prune_token': to_prune.token, 'to_prune_playlist': playlist_id, 'compare_attr':
+                   zip(chosen.averages.iteritems(), to_prune.attributes)}
     return render(request, 'prune/magic.html', context)
 
 
