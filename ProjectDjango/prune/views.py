@@ -123,11 +123,21 @@ def magic(request):
 
 
 def remove(request):
-    # Retrieve song id, position, and playlist id of song to be removed
-    song_id = request.GET.get('song_id')
-    order = int(request.GET.get('order'))
-    token = request.GET.get('token')
-    playlist_id = request.GET.get('playlist')
+    # Retrieve song id, position, and playlist id of song to be remove
+    if request.GET.get('song_id'):
+        song_id = request.GET.get('song_id')
+        request.session['song_id'] = song_id
+        order = int(request.GET.get('order'))
+        request.session['order'] = order
+        token = request.GET.get('token')
+        request.session['remove_token'] = token
+        playlist_id = request.GET.get('playlist')
+        request.session['remove_playlist_id'] = playlist_id
+        return redirect('/prune/remove')
+    song_id = request.session.get('song_id')
+    order = request.session.get('order')
+    token = request.session.get('remove_token')
+    playlist_id = request.session.get('remove_playlist_id')
     headers = {'Authorization': 'Bearer ' + token, 'Accept': 'application/json','Content-Type': 'application/json'}
     # This the format the Spotify API expects for data on what song to delete
     data = '{"tracks":[{"uri":"spotify:track:' + song_id + '","positions":[' + str(order) + ']}]}'
