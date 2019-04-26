@@ -33,6 +33,11 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
         <table class="tg">
+            <tr>
+              <th class="tg-01ax">attribute</th>
+              <th class="tg-01ax">average</th>
+              <th class="tg-01ax">{{to_prune_name}}</th>
+            </tr>
           {% for dictionary, song_value in compare_attr %} {% with name=dictionary.0 average_value=dictionary.1 %}
             <tr>
               <th class="tg-01ax">{{name}}</th>
