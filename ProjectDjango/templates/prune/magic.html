@@ -1,11 +1,52 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>The chosen song to prune is:</h1>
-    <h2>{{to_prune_name}}</h2>
-  </body>
-</html>
+{% extends "authenticate/base.html" %}
+{% block content %}
+
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      <title>TidyTunes</title>
+      <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg .tg-0lax{text-align:left;vertical-align:top}
+      </style>
+    </head>
+    <body>
+      <div class="pruned_song" id="pruned_song" style="text-align: center;">
+        <h1>The chosen song to prune is:</h1>
+        <h2>{{to_prune_name}}</h2>
+        <iframe src="https://open.spotify.com/embed/track/{{to_prune_id}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <br>
+
+        <button name="remove" type="submit" value="1" onclick="window.location.href = '/prune/remove?order={{to_prune_pos}}&song_id={{to_prune_id}}&token={{to_prune_token}}&playlist={{to_prune_playlist}}';">Remove</button>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <table class="tg">
+            <tr>
+              <th class="tg-01ax">attribute</th>
+              <th class="tg-01ax">average</th>
+              <th class="tg-01ax">{{to_prune_name}}</th>
+            </tr>
+          {% for dictionary, song_value in compare_attr %} {% with name=dictionary.0 average_value=dictionary.1 %}
+            <tr>
+              <th class="tg-01ax">{{name}}</th>
+              <th class="tg-01ax">{{average_value}}</th>
+              <th class="tg-01ax">{{song_value}}</th>
+            </tr>
+          {% endwith %}{% endfor %}
+        </table>
+      </div>
+    </body>
+  </html>
+{% endblock content %}

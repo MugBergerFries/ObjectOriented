@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>Choose your Playlist</h1>
-    {% for name, id in playlist_list.items %}
-      <!-- <button type="submit" name="name_{{playlist}}" formaction="/prune/magic">{{playlist}}</button> -->
-      <button name="id_{{id}}" type="submit" value="1" onclick="window.location.href = '/prune/magic?playlist={{id}}&token={{token}}';">{{name}}</button>
-      <!-- <label for="id_{{id}}">{{name}}</label>
-      <input type="radio" id="id_{{id}}" name="playlist" value="{{name}}"/>
-      <br> -->
+{% extends "authenticate/base.html" %}
+{% block content %}
 
-      <!-- <a href="/prune/magic" class="btn btn-primary">{{playlist}}</a> -->
-    {% endfor %}
-  </body>
-</html>
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title></title>
+    </head>
+    <body>
+      <div id="playlists" style="text-align: center;">
+        <h1>Choose your Playlist</h1>
+        {% for name, id in playlist_dict.items %}
+          <button name="id_{{id}}" type="submit" value="1" onclick="window.location.href = '/prune/magic?playlist={{id}}';">{{name}}</button>
+        {% endfor %}
+      </div>
+    </body>
+  </html>
+{% endblock content %}

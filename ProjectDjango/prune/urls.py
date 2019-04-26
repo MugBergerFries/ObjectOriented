@@ -5,6 +5,7 @@ app_name = 'prune'
 
 urlpatterns = [
     path('', views.choose, name='prune-choose'),
-    path('magic/', views.magic, name='prune-magic')
+    path('magic/', views.magic, name='prune-magic'),
+    path('remove/', views.remove, name = 'prune-remove'), 
 
 ]

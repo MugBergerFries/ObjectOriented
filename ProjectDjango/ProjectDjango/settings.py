@@ -25,7 +25,7 @@ SECRET_KEY = '*$or$=ck^ob8_b$)nh=hd79=g9(9o51+d!vhlz(^yrm^2$7&22'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-18-191-18-199.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['ec2-18-191-18-199.us-east-2.compute.amazonaws.com', '18.191.18.199', 'tidytunes.org', 'www.tidytunes.org', '3.18.166.216', 'ec2-3-18-166-216.us-east-2.compute.amazonaws.com']
 
 
 # Application definition
