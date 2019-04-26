@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 import requests
 
 
@@ -104,7 +105,11 @@ def choose(request):
 
 # The page where the chosen playlist is examined to find the song to be removed
 def magic(request):
-    playlist_id = request.GET.get('playlist')  # Retrieve chosen playlist ID (given to us from choose.html)
+    if request.GET.get('playlist'):
+        playlist_id = request.GET.get('playlist')  # Retrieve chosen playlist ID (given to us from choose.html)
+        request.session['playlist_id'] = playlist_id
+        return redirect('/magic')
+    playlist_id = request.session.get('playlist_id')
     token = request.session.get('token')  # Retrieve user's token from session
     chosen = Playlist(playlist_id, token)  # Make a Playlist object for the chosen playlist
     to_prune = chosen.find_song_to_prune()  # Find the song to remove
